@@ -1,6 +1,7 @@
 "use client";
 
-import { Accordion, Button, buttonVariants, Drawer, Link, Separator } from "@heroui/react";
+import { Accordion, Button, buttonVariants, Drawer, Link } from "@heroui/react";
+import { FlaskIcon, HouseIcon, ShieldCheckIcon, XIcon, type Icon } from "@phosphor-icons/react";
 import Image from "next/image";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
@@ -19,22 +20,17 @@ const researchItems = [
   { key: "contact", path: "/contact" },
 ] as const;
 
-const Logo = ({ className }: { className?: string }) => (
-  <Image
-    src="/img/brand/menu-logo.jpg"
-    alt="Takere"
-    width={1093}
-    height={275}
-    sizes="140px"
-    // The wordmark is a JPEG on white; multiply drops the white onto the glass bar.
-    className={cn("block h-8.5 w-auto mix-blend-multiply mobile:h-6.5", className)}
-  />
-);
+// Same look as the takere-hcp SideMenu: white text on navy, active item gets a green inset bar + filled icon.
+const menuItem = (active: boolean) =>
+  cn(
+    "group mr-3 flex min-h-11 w-[calc(100%-0.75rem)] items-center gap-3 rounded-none rounded-r-xl px-3 py-2.5 font-display text-u-15 font-semibold text-white/85 no-underline transition-colors",
+    active ? "bg-white/10 text-white shadow-[inset_3px_0_0_var(--color-green)]" : "hover:bg-white/10 hover:text-white",
+  );
 
-const Arrow = () => (
-  <svg viewBox="0 0 16 12" className="w-4 shrink-0 opacity-40 transition group-hover:translate-x-1 group-hover:opacity-100" aria-hidden="true">
-    <path d="M1 6h13M9 1l5 5-5 5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
+const MenuIcon = ({ icon: Icon, active }: { icon: Icon; active: boolean }) => (
+  <span className={cn("flex shrink-0", active && "text-green")}>
+    <Icon size={22} weight={active ? "fill" : "regular"} />
+  </span>
 );
 
 export default function TopBar({ lang, t }: { lang: Lang; t: Dictionary["common"] }) {
@@ -55,8 +51,8 @@ export default function TopBar({ lang, t }: { lang: Lang; t: Dictionary["common"
   useEffect(() => setOpen(false), [pathname]);
 
   // Switching language is a full navigation so the middleware can pick the locale.
-  const langSwitch = (size: "sm" | "md") => (
-    <div className="inline-flex gap-1 rounded-full bg-default p-1" role="group" aria-label="Idioma / Language">
+  const langSwitch = (size: "sm" | "md", dark = false) => (
+    <div className={cn("inline-flex gap-1 rounded-full p-1", dark ? "bg-white/10" : "bg-default")} role="group" aria-label="Idioma / Language">
       {(
         [
           ["pt", "pt-BR", <BrazilFlag key="f" />, "PT"],
@@ -71,7 +67,7 @@ export default function TopBar({ lang, t }: { lang: Lang; t: Dictionary["common"
           className={cn(
             buttonVariants({ size, variant: lang === code ? "secondary" : "ghost" }),
             "rounded-full font-display tracking-wide",
-            lang === code ? "bg-background text-navy shadow-sm" : "text-muted",
+            lang === code ? "bg-background text-navy shadow-sm" : dark ? "text-white/70 hover:bg-white/10 hover:text-white" : "text-muted",
           )}
         >
           {flag}
@@ -85,12 +81,6 @@ export default function TopBar({ lang, t }: { lang: Lang; t: Dictionary["common"
     "relative h-full rounded-none px-4 font-display text-[13px] font-medium tracking-[0.12em] text-ink uppercase no-underline " +
     "after:absolute after:inset-x-4 after:bottom-4 after:h-0.5 after:scale-x-0 after:rounded-full after:bg-green after:transition-transform after:content-[''] " +
     "hover:text-navy hover:after:scale-x-100 aria-[current=page]:text-navy aria-[current=page]:after:scale-x-100";
-
-  const menuLink = (active: boolean) =>
-    cn(
-      "group flex h-15 w-full items-center justify-between rounded-none font-display text-u-20 font-semibold text-navy no-underline",
-      active && "text-green",
-    );
 
   return (
     <header
@@ -131,71 +121,81 @@ export default function TopBar({ lang, t }: { lang: Lang; t: Dictionary["common"
       </div>
 
       <Drawer isOpen={open} onOpenChange={setOpen}>
-        <Drawer.Backdrop variant="blur">
+        <Drawer.Backdrop className="bg-black/40">
           <Drawer.Content placement="right">
             <Drawer.Dialog
               aria-label="Menu"
               className={cn(
-                "flex h-full w-[min(88vw,360px)] max-w-none flex-col overflow-y-auto shadow-none",
-                "bg-[radial-gradient(circle_at_115%_-5%,rgba(12,177,123,0.18),transparent_45%),radial-gradient(circle_at_-25%_105%,rgba(0,29,75,0.12),transparent_50%)] bg-surface",
+                "flex h-full w-[min(88vw,300px)] max-w-none flex-col overflow-y-auto p-0 text-white shadow-none!",
+                "bg-[linear-gradient(180deg,var(--color-navy)_0%,var(--color-navy-dark)_100%)]",
+                "pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]",
               )}
             >
-              <Drawer.Header className="flex flex-row items-center justify-between">
-                <NextLink href={href(lang, "/")} className="rounded-md">
-                  <Logo className="h-7" />
+              <div className="flex items-center justify-between px-4 py-4">
+                <NextLink href={href(lang, "/")} className="w-full max-w-40 rounded-md">
+                  <Image src="/img/brand/logo-white.png" alt="Takere" width={1444} height={404} sizes="160px" className="w-full" />
                 </NextLink>
-                <Drawer.CloseTrigger aria-label={t.closeMenu} />
-              </Drawer.Header>
+                <Button
+                  isIconOnly
+                  slot="close"
+                  variant="ghost"
+                  aria-label={t.closeMenu}
+                  // Keep the ghost button transparent in every state; feedback is opacity only.
+                  className={cn(
+                    "size-11 shrink-0 rounded-[15px] text-white transition-opacity",
+                    "bg-transparent! [--button-bg:transparent] [--button-bg-hover:transparent] [--button-bg-pressed:transparent] [--button-fg:currentColor]",
+                    "hover:opacity-70 data-[pressed=true]:scale-100 data-[pressed=true]:opacity-50",
+                  )}
+                >
+                  <XIcon size={22} weight="bold" />
+                </Button>
+              </div>
 
-              <Drawer.Body>
-                <nav aria-label="Menu" className="flex flex-col">
-                  <Link href={href(lang, "/")} aria-current={base === "/" ? "page" : undefined} className={menuLink(base === "/")}>
-                    {t.nav.home}
-                    <Arrow />
-                  </Link>
-                  <Separator />
-                  <Accordion hideSeparator defaultExpandedKeys={inResearch ? ["research"] : []} className="px-0">
-                    <Accordion.Item id="research">
-                      <Accordion.Heading>
-                        <Accordion.Trigger className={cn(menuLink(inResearch), "px-0 hover:bg-transparent")}>
-                          {t.nav.research}
-                          <Accordion.Indicator />
-                        </Accordion.Trigger>
-                      </Accordion.Heading>
-                      <Accordion.Panel>
-                        <Accordion.Body className="flex flex-col px-0 pt-0 pb-3">
-                          {researchItems.map(({ key, path }) => (
-                            <Link
-                              key={key}
-                              href={href(lang, path)}
-                              aria-current={base === path ? "page" : undefined}
-                              className={cn(
-                                "w-full rounded-none border-l-2 border-separator py-2.5 pl-4 font-display text-u-15 font-medium text-muted no-underline",
-                                "hover:border-green hover:text-navy",
-                                base === path && "border-green font-semibold text-green",
-                              )}
-                            >
-                              {t.researchNav[key]}
-                            </Link>
-                          ))}
-                        </Accordion.Body>
-                      </Accordion.Panel>
-                    </Accordion.Item>
-                  </Accordion>
-                  <Separator />
-                  <Link
-                    href={href(lang, "/policy")}
-                    aria-current={base === "/policy" ? "page" : undefined}
-                    className={menuLink(base === "/policy")}
-                  >
-                    {t.footer.policy}
-                    <Arrow />
-                  </Link>
-                  <Separator />
-                </nav>
-              </Drawer.Body>
+              <nav aria-label="Menu" className="mt-2 flex flex-col gap-2">
+                <Link href={href(lang, "/")} aria-current={base === "/" ? "page" : undefined} className={menuItem(base === "/")}>
+                  <MenuIcon icon={HouseIcon} active={base === "/"} />
+                  {t.nav.home}
+                </Link>
+                <Accordion hideSeparator defaultExpandedKeys={inResearch ? ["research"] : []} className="px-0">
+                  <Accordion.Item id="research">
+                    <Accordion.Heading>
+                      <Accordion.Trigger className={menuItem(inResearch)}>
+                        <MenuIcon icon={FlaskIcon} active={inResearch} />
+                        <span className="flex-1">{t.nav.research}</span>
+                        <Accordion.Indicator className="text-white/70" />
+                      </Accordion.Trigger>
+                    </Accordion.Heading>
+                    <Accordion.Panel>
+                      <Accordion.Body className="ml-5.5 flex flex-col px-0 pt-1 pb-1">
+                        {researchItems.map(({ key, path }) => (
+                          <Link
+                            key={key}
+                            href={href(lang, path)}
+                            aria-current={base === path ? "page" : undefined}
+                            className={cn(
+                              "w-full rounded-none border-l-2 border-white/15 py-2.5 pl-4 font-display text-u-14 font-medium text-white/65 no-underline",
+                              "hover:border-green hover:text-white",
+                              base === path && "border-green font-semibold text-green",
+                            )}
+                          >
+                            {t.researchNav[key]}
+                          </Link>
+                        ))}
+                      </Accordion.Body>
+                    </Accordion.Panel>
+                  </Accordion.Item>
+                </Accordion>
+                <Link
+                  href={href(lang, "/policy")}
+                  aria-current={base === "/policy" ? "page" : undefined}
+                  className={menuItem(base === "/policy")}
+                >
+                  <MenuIcon icon={ShieldCheckIcon} active={base === "/policy"} />
+                  {t.footer.policy}
+                </Link>
+              </nav>
 
-              <Drawer.Footer className="mt-auto justify-center pb-8">{langSwitch("md")}</Drawer.Footer>
+              <div className="mt-auto flex justify-center px-4 pt-6 pb-8">{langSwitch("md", true)}</div>
             </Drawer.Dialog>
           </Drawer.Content>
         </Drawer.Backdrop>
