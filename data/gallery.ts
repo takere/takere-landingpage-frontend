@@ -37,5 +37,9 @@ export const galleryRows: GalleryPhoto[][] = [
       pt: "Workshop Takere-Posto de Saúde Santa Marta RS",
       en: "Takere workshop at Santa Marta Health Center, RS",
     }),
+    photo("09.jpeg", 960, 1280, {
+      pt: "Apresentação no Simpósio da SBRAFH2",
+      en: "Presentation at the SBRAFH2 Symposium",
+    }),
   ],
 ];

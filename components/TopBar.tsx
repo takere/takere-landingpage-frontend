@@ -136,7 +136,7 @@ export default function TopBar({ lang, t }: { lang: Lang; t: Dictionary["common"
             <Drawer.Dialog
               aria-label="Menu"
               className={cn(
-                "flex h-full w-[min(88vw,360px)] max-w-none flex-col overflow-y-auto",
+                "flex h-full w-[min(88vw,360px)] max-w-none flex-col overflow-y-auto shadow-none",
                 "bg-[radial-gradient(circle_at_115%_-5%,rgba(12,177,123,0.18),transparent_45%),radial-gradient(circle_at_-25%_105%,rgba(0,29,75,0.12),transparent_50%)] bg-surface",
               )}
             >
