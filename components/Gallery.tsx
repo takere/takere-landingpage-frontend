@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Modal } from "@heroui/react";
+import { Button, Modal, Skeleton } from "@heroui/react";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 
@@ -36,6 +36,12 @@ export default function Gallery({ rows, labels }: { rows: Photo[][]; labels: Lab
   const photos = rows.flat();
   const [isOpen, setOpen] = useState(false);
   const [current, setCurrent] = useState(0);
+  // Photos that finished loading; their Skeleton placeholder is removed.
+  const [loaded, setLoaded] = useState<ReadonlySet<string>>(() => new Set());
+  const markLoaded = useCallback(
+    (src: string) => setLoaded((prev) => (prev.has(src) ? prev : new Set(prev).add(src))),
+    [],
+  );
 
   const step = useCallback(
     (delta: number) => setCurrent((i) => (i + delta + photos.length) % photos.length),
@@ -77,13 +83,15 @@ export default function Gallery({ rows, labels }: { rows: Photo[][]; labels: Lab
                   }}
                   aria-label={p.alt || `${labels.photo} ${i + 1}`}
                 >
+                  {!loaded.has(p.src) && <Skeleton className="absolute inset-0 rounded-none" />}
                   <Image
                     src={p.src}
                     alt={p.alt}
                     width={p.width}
                     height={p.height}
                     sizes="(max-width: 760px) 100vw, 680px"
-                    className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.03] mobile:h-auto"
+                    onLoad={() => markLoaded(p.src)}
+                    className="relative size-full object-cover transition-transform duration-500 group-hover:scale-[1.03] mobile:h-auto"
                   />
                   {p.alt && (
                     <span
@@ -113,15 +121,20 @@ export default function Gallery({ rows, labels }: { rows: Photo[][]; labels: Lab
               />
               {photo && (
                 <figure className="flex max-h-full max-w-full flex-col items-center">
-                  <Image
-                    key={photo.src}
-                    src={photo.src}
-                    alt={photo.alt}
-                    width={photo.width}
-                    height={photo.height}
-                    sizes="90vw"
-                    className="max-h-[calc(100dvh-140px)] w-auto rounded-xl object-contain"
-                  />
+                  <div key={photo.src} className="relative overflow-hidden rounded-xl">
+                    {!loaded.has(`lightbox:${photo.src}`) && (
+                      <Skeleton className="absolute inset-0 rounded-none bg-white/10" />
+                    )}
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      width={photo.width}
+                      height={photo.height}
+                      sizes="90vw"
+                      onLoad={() => markLoaded(`lightbox:${photo.src}`)}
+                      className="relative block max-h-[calc(100dvh-140px)] w-auto object-contain"
+                    />
+                  </div>
                   {photo.alt && (
                     <figcaption className="mt-3 text-center font-display text-white">{photo.alt}</figcaption>
                   )}

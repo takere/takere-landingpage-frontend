@@ -3,6 +3,7 @@ import { LinkRoot } from "@heroui/react/link";
 import type { ReactNode } from "react";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
+import MapEmbed from "@/components/MapEmbed";
 import ResearchLayout from "@/components/ResearchLayout";
 import SectionTitle from "@/components/SectionTitle";
 import { addressLines, CONTACT_EMAIL, contacts, MAP_EMBED_URL } from "@/data/contact";
@@ -106,13 +107,7 @@ export default async function Page({ params }: PageProps<"/[lang]/contact">) {
                     ))}
                   </address>
                 </Row>
-                <iframe
-                  className="block h-82.5 w-full rounded-2xl border-0 ring-1 ring-black/5 mobile:hidden"
-                  src={MAP_EMBED_URL}
-                  title={t.map}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
+                <MapEmbed src={MAP_EMBED_URL} title={t.map} className="h-82.5 w-full mobile:hidden" />
               </CardRoot>
             </section>
           </div>
