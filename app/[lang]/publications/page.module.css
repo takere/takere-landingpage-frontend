@@ -1,0 +1,72 @@
+.page {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.year + .year {
+  margin-top: 64px;
+}
+
+.year .yearTitle {
+  font-size: 44px;
+}
+
+.right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.year ul {
+  margin-top: 40px;
+  padding-left: 52px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.year li {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.year a {
+  color: var(--text);
+  word-break: break-word;
+}
+
+.year a:hover {
+  color: var(--green);
+}
+
+@media (max-width: 760px) {
+  .page {
+    max-width: calc(320 * var(--u));
+    padding: calc(20 * var(--u)) calc(20 * var(--u)) calc(40 * var(--u));
+  }
+  .year + .year {
+    margin-top: calc(40 * var(--u));
+  }
+  .year .yearTitle {
+    font-size: calc(27 * var(--u));
+  }
+  .year ul {
+    margin-top: calc(30 * var(--u));
+    padding-left: calc(29 * var(--u));
+    gap: calc(24 * var(--u));
+  }
+  .year li {
+    font-size: calc(16 * var(--u));
+    line-height: calc(24 * var(--u));
+  }
+}

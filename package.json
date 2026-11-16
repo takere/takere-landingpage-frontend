@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node --env-file-if-exists=.env node_modules/next/dist/bin/next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "node --env-file-if-exists=.env node_modules/next/dist/bin/next start",
     "lint": "eslint"
   },
   "dependencies": {
@@ -21,5 +21,8 @@
     "eslint": "^9",
     "eslint-config-next": "15.5.27",
     "@eslint/eslintrc": "^3"
+  },
+  "engines": {
+    "node": ">=22.9"
   }
 }

@@ -1,0 +1,63 @@
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 20px 80px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.75;
+  color: #000;
+}
+
+.page h1 {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 28px;
+  color: var(--text);
+  margin-bottom: 28px;
+}
+
+.page h2,
+.page h3 {
+  font-size: 15px;
+  font-weight: 400;
+  margin-top: 26px;
+  padding-left: 22px;
+}
+
+.page h2 + p,
+.page h3 + p {
+  margin-top: 0;
+}
+
+.page p {
+  margin-top: 26px;
+}
+
+.page ul {
+  margin: 26px 0 0 26px;
+}
+
+@media (max-width: 760px) {
+  .page {
+    max-width: calc(320 * var(--u));
+    padding: calc(20 * var(--u)) calc(20 * var(--u)) calc(40 * var(--u));
+    font-size: calc(16 * var(--u));
+    line-height: calc(22.4 * var(--u));
+  }
+  .page h1 {
+    font-size: calc(23 * var(--u));
+    line-height: calc(32.2 * var(--u));
+    margin-bottom: calc(20 * var(--u));
+  }
+  .page h2,
+  .page h3 {
+    font-size: calc(16 * var(--u));
+    margin-top: calc(22 * var(--u));
+    padding-left: calc(20 * var(--u));
+  }
+  .page p,
+  .page ul {
+    margin-top: calc(22 * var(--u));
+  }
+}

@@ -1,0 +1,84 @@
+.footer {
+  background: var(--navy);
+  color: #fff;
+}
+
+.main {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 64px 20px 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+}
+
+.logo {
+  justify-self: center;
+  width: 264px;
+  height: auto;
+}
+
+.contact h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 28px;
+  margin-bottom: 14px;
+}
+
+.contact p {
+  font-family: var(--font-display);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.email {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.email:hover {
+  text-decoration: underline;
+}
+
+.bottom {
+  background: var(--navy-dark);
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 13px;
+  font-family: var(--font-body);
+}
+
+.bottom a {
+  color: #fff;
+}
+
+@media (max-width: 760px) {
+  .main {
+    grid-template-columns: 1fr;
+    gap: 0;
+    max-width: calc(320 * var(--u));
+    padding: calc(16 * var(--u)) calc(10 * var(--u)) calc(14 * var(--u));
+  }
+  .logo {
+    width: calc(210 * var(--u));
+    margin-bottom: calc(13 * var(--u));
+  }
+  .contact h3 {
+    font-size: calc(21 * var(--u));
+    margin-bottom: calc(8 * var(--u));
+  }
+  .contact p {
+    font-size: calc(17 * var(--u));
+    line-height: 1.4;
+  }
+  .bottom {
+    max-width: calc(320 * var(--u));
+    margin: 0 auto;
+    padding: calc(10 * var(--u)) calc(14 * var(--u)) calc(16 * var(--u));
+    background: none;
+    border-top: calc(3 * var(--u)) solid var(--navy-dark);
+    font-size: calc(14 * var(--u));
+    line-height: 1.4;
+  }
+}

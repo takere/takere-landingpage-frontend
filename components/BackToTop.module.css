@@ -1,0 +1,33 @@
+.button {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .button {
+    position: fixed;
+    right: calc(16 * var(--u));
+    bottom: calc(24 * var(--u));
+    z-index: 40;
+    display: grid;
+    place-items: center;
+    width: calc(40 * var(--u));
+    height: calc(40 * var(--u));
+    border: 1px solid var(--text);
+    border-radius: 50%;
+    background: #fff;
+    color: var(--text);
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .button[data-visible="true"] {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .button svg {
+    width: calc(18 * var(--u));
+  }
+}
