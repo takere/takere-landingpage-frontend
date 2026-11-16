@@ -127,8 +127,7 @@ Maintain the existing structure:
 ```
 takere-landing-page/
 ├── app/
-│   ├── [lang]/          # Pages (one route tree for all languages)
-│   └── og/[image]/      # Open Graph images
+│   └── [lang]/          # Pages (one route tree for all languages)
 ├── components/          # Shared components
 ├── data/                # Structured content
 ├── i18n/                # Locale config and dictionaries

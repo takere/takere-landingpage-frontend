@@ -27,6 +27,6 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // Skip Next internals, the OG image route and any file with an extension (images, robots.txt, sitemap.xml…).
-  matcher: ["/((?!_next|og|.*\\..*).*)"],
+  // Skip Next internals and any file with an extension (images, robots.txt, sitemap.xml…).
+  matcher: ["/((?!_next|.*\\..*).*)"],
 };

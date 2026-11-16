@@ -41,8 +41,6 @@ const pt = {
       "Hospital de Clínicas de Porto Alegre",
     ],
     ogAlt: "Takere: cuidado individualizado ao seu paciente",
-    ogTagline: "Cuidado individualizado ao seu paciente",
-    ogSubtitle: "Grupo de pesquisa em saúde digital · UFRGS + HCPA",
     organization:
       "Grupo de pesquisa do Instituto de Informática da UFRGS, em parceria com o HCPA, que desenvolve uma plataforma mHealth para personalização do plano de cuidado e engajamento de pacientes no tratamento.",
     pages: {

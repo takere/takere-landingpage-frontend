@@ -42,8 +42,6 @@ const en: Dictionary = {
       "Hospital de Clínicas de Porto Alegre",
     ],
     ogAlt: "Takere: individualized care for your patient",
-    ogTagline: "Individualized care for your patient",
-    ogSubtitle: "Digital health research group · UFRGS + HCPA",
     organization:
       "Research group at the Institute of Informatics (UFRGS), in partnership with HCPA, developing an mHealth platform for personalizing care plans and keeping patients engaged in treatment.",
     pages: {

@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { CONTACT_EMAIL } from "@/data/contact";
 import { defaultLocale, getDictionary, href, type Dictionary, type Lang } from "@/i18n";
-import { ogSize } from "./ogImage";
 
 export const SITE_URL = "https://www.takere.com.br";
 export const SITE_NAME = "Takere";
 const ORG_ID = `${SITE_URL}/#organization`;
+
+/** Open Graph / Twitter card image (public/img/brand/social-media.jpg), shared by both languages. */
+const OG_IMAGE = { url: "/img/brand/social-media.jpg", width: 836, height: 414, type: "image/jpeg" };
 
 export type PageKey = keyof Dictionary["seo"]["pages"];
 
@@ -37,7 +39,7 @@ export function pageMetadata(lang: Lang, page: PageKey): Metadata {
   const { title, description } = seo.pages[page];
   const base = ROUTES[page];
   const path = href(lang, base);
-  const image = { url: `/og/${lang}.png`, ...ogSize, alt: seo.ogAlt, type: "image/png" };
+  const image = { ...OG_IMAGE, alt: seo.ogAlt };
   return {
     title,
     description,

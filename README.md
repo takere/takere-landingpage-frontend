@@ -38,7 +38,7 @@ The site is a **fully static, bilingual website** that:
 - Presents the Takere product and the Takere Research Lab
 - Lists research lines, team members, publications, a photo gallery and contact information
 - Serves Portuguese at unprefixed URLs (`/team`) and English under `/en` (`/en/team`)
-- Generates SEO metadata, Open Graph images, `sitemap.xml` and `robots.txt` at build time
+- Generates SEO metadata (Open Graph / Twitter cards), `sitemap.xml` and `robots.txt` at build time
 - Is deployed automatically to GitHub Pages on every push to `main`
 
 ## 🧰 Tech Stack
@@ -64,7 +64,6 @@ takere-landing-page/
 │   │   ├── gallery/
 │   │   ├── contact/
 │   │   └── policy/
-│   ├── og/[image]/              # Open Graph images (/og/pt.png, /og/en.png)
 │   ├── global-not-found.tsx     # 404 page
 │   ├── globals.css              # Tailwind setup, theme and mobile scale unit
 │   ├── sitemap.ts
@@ -72,7 +71,7 @@ takere-landing-page/
 ├── components/                  # Top bar, footer, gallery, partners, stats...
 ├── data/                        # Structured content (team, publications, gallery...)
 ├── i18n/                        # Locale config, route helpers and dictionaries
-├── lib/                         # Metadata, OG image rendering, helpers
+├── lib/                         # Metadata and helpers
 ├── public/                      # Static assets (images, CNAME, .nojekyll)
 ├── scripts/                     # Post-build scripts
 ├── middleware.ts                # Dev-only locale routing
