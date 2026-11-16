@@ -1,7 +1,18 @@
 "use client";
 
 import { Accordion, Button, buttonVariants, Drawer, Link } from "@heroui/react";
-import { FlaskIcon, HouseIcon, ShieldCheckIcon, XIcon, type Icon } from "@phosphor-icons/react";
+import {
+  BookOpenTextIcon,
+  EnvelopeSimpleIcon,
+  FlaskIcon,
+  HouseIcon,
+  HouseSimpleIcon,
+  ImagesIcon,
+  ShieldCheckIcon,
+  UsersThreeIcon,
+  XIcon,
+  type Icon,
+} from "@phosphor-icons/react";
 import Image from "next/image";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
@@ -13,11 +24,11 @@ import { BrazilFlag, UKFlag } from "./Flags";
 
 const researchPaths = ["/research", "/team", "/publications", "/gallery", "/contact"];
 const researchItems = [
-  { key: "home", path: "/research" },
-  { key: "team", path: "/team" },
-  { key: "publications", path: "/publications" },
-  { key: "gallery", path: "/gallery" },
-  { key: "contact", path: "/contact" },
+  { key: "home", path: "/research", icon: HouseSimpleIcon },
+  { key: "team", path: "/team", icon: UsersThreeIcon },
+  { key: "publications", path: "/publications", icon: BookOpenTextIcon },
+  { key: "gallery", path: "/gallery", icon: ImagesIcon },
+  { key: "contact", path: "/contact", icon: EnvelopeSimpleIcon },
 ] as const;
 
 // Same look as the takere-hcp SideMenu: white text on navy, active item gets a green inset bar + filled icon.
@@ -37,6 +48,7 @@ export default function TopBar({ lang, t }: { lang: Lang; t: Dictionary["common"
   const pathname = usePathname();
   const base = basePath(pathname);
   const inResearch = researchPaths.includes(base);
+  const isStatic = base === "/policy";
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -84,11 +96,15 @@ export default function TopBar({ lang, t }: { lang: Lang; t: Dictionary["common"
 
   return (
     <header
+      data-site-header
       data-scrolled={scrolled}
+      // The privacy policy is long-form reading, so the bar scrolls away there instead of sticking.
+      data-static={isStatic || undefined}
       className={cn(
-        "sticky top-0 z-50 h-[var(--topbar-h)] border-b border-transparent bg-background/80 backdrop-blur-xl backdrop-saturate-150 transition-[box-shadow,border-color,background-color] duration-300",
+        isStatic ? "relative" : "sticky top-0",
+        "z-50 h-[var(--topbar-h)] border-b border-transparent bg-background/80 backdrop-blur-xl backdrop-saturate-150 transition-[box-shadow,border-color,background-color] duration-300",
         "before:absolute before:inset-x-0 before:top-0 before:h-0.75 before:bg-linear-to-r before:from-green before:to-navy before:content-['']",
-        scrolled && "border-separator bg-background/90 shadow-[0_6px_24px_-12px_rgba(0,29,75,0.25)]",
+        scrolled && !isStatic && "border-separator bg-background/90 shadow-[0_6px_24px_-12px_rgba(0,29,75,0.25)]",
       )}
     >
       <div className="container-site grid h-full grid-cols-[1fr_auto_1fr] items-center mobile:flex mobile:justify-end mobile:pr-2">
@@ -167,17 +183,18 @@ export default function TopBar({ lang, t }: { lang: Lang; t: Dictionary["common"
                     </Accordion.Heading>
                     <Accordion.Panel>
                       <Accordion.Body className="ml-5.5 flex flex-col px-0 pt-1 pb-1">
-                        {researchItems.map(({ key, path }) => (
+                        {researchItems.map(({ key, path, icon: ItemIcon }) => (
                           <Link
                             key={key}
                             href={href(lang, path)}
                             aria-current={base === path ? "page" : undefined}
                             className={cn(
-                              "w-full rounded-none border-l-2 border-white/15 py-2.5 pl-4 font-display text-u-14 font-medium text-white/65 no-underline",
+                              "flex w-full items-center gap-2.5 rounded-none border-l-2 border-white/15 py-2.5 pl-4 font-display text-u-14 font-medium text-white/65 no-underline",
                               "hover:border-green hover:text-white",
                               base === path && "border-green font-semibold text-green",
                             )}
                           >
+                            <ItemIcon size={18} weight={base === path ? "fill" : "regular"} className="shrink-0" />
                             {t.researchNav[key]}
                           </Link>
                         ))}
