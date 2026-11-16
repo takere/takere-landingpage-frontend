@@ -1,7 +1,10 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { defaultLocale, isLang, LANG_HEADER } from "@/i18n/config";
+import { defaultLocale, isLang } from "@/i18n/config";
 
 /**
+ * Dev server only: the production build is a static export (no middleware), where
+ * scripts/flatten-default-locale.mjs moves the Portuguese pages to the site root instead.
+ *
  * Routes live under app/[lang]. Portuguese (default) URLs have no prefix, so
  * "/team" is rewritten internally to "/pt/team"; "/en/..." passes through.
  * An explicit "/pt/..." is redirected to the unprefixed URL to avoid duplicates.
@@ -16,15 +19,11 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url, 308);
   }
 
-  // Tells app/global-not-found.tsx which language to render (it receives no route params).
-  const headers = new Headers(request.headers);
-  headers.set(LANG_HEADER, isLang(first) ? first : defaultLocale);
-
-  if (isLang(first)) return NextResponse.next({ request: { headers } });
+  if (isLang(first)) return NextResponse.next();
 
   const url = request.nextUrl.clone();
   url.pathname = `/${defaultLocale}${pathname === "/" ? "" : pathname}`;
-  return NextResponse.rewrite(url, { request: { headers } });
+  return NextResponse.rewrite(url);
 }
 
 export const config = {

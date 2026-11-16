@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { href, locales } from "@/i18n";
 import { ROUTES, SITE_URL, languageAlternates } from "@/lib/metadata";
 
+export const dynamic = "force-static";
+
 const absolute = (path: string) => `${SITE_URL}${path === "/" ? "" : path}`;
 
 export default function sitemap(): MetadataRoute.Sitemap {

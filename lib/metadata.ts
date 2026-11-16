@@ -37,7 +37,7 @@ export function pageMetadata(lang: Lang, page: PageKey): Metadata {
   const { title, description } = seo.pages[page];
   const base = ROUTES[page];
   const path = href(lang, base);
-  const image = { url: `/og/${lang}`, ...ogSize, alt: seo.ogAlt, type: "image/png" };
+  const image = { url: `/og/${lang}.png`, ...ogSize, alt: seo.ogAlt, type: "image/png" };
   return {
     title,
     description,

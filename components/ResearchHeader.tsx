@@ -4,7 +4,7 @@ import { Tabs } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { href, type Lang } from "@/i18n/config";
+import { basePath, href, type Lang } from "@/i18n/config";
 import type { Dictionary } from "@/i18n";
 
 const items = [
@@ -17,7 +17,7 @@ const items = [
 
 export default function ResearchHeader({ lang, t }: { lang: Lang; t: Dictionary["common"]["researchNav"] }) {
   const pathname = usePathname();
-  const selected = items.find(({ path }) => pathname === href(lang, path))?.key ?? "home";
+  const selected = items.find(({ path }) => basePath(pathname) === path)?.key ?? "home";
 
   return (
     <div className="flex flex-col items-center gap-3 border-b border-(--border) bg-background pt-5 pb-0 mobile:gap-0 mobile:border-b-0 mobile:pt-1 mobile:pb-3">

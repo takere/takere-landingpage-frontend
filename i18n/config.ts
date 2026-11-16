@@ -1,9 +1,6 @@
 export const locales = ["pt", "en"] as const;
 export const defaultLocale = "pt";
 
-/** Request header set by middleware with the locale of the requested URL. */
-export const LANG_HEADER = "x-takere-lang";
-
 export type Lang = (typeof locales)[number];
 
 /** A value that varies per language, e.g. `{ pt: "Equipe", en: "Team" }`. */
@@ -22,10 +19,14 @@ export function href(lang: Lang, path: string): string {
   return path === "/" ? `/${lang}` : `/${lang}${path}`;
 }
 
-/** Strips the locale prefix from a public path: "/en/team" -> "/team". */
+/**
+ * Strips the locale prefix from a path: "/en/team" -> "/team". Also handles the internal
+ * "/pt/team": the static export renders Portuguese pages under /pt, so that's what
+ * usePathname() reports while prerendering.
+ */
 export function basePath(pathname: string): string {
   const [, first] = pathname.split("/");
-  if (!isLang(first) || first === defaultLocale) return pathname || "/";
+  if (!isLang(first)) return pathname || "/";
   return pathname.slice(first.length + 1) || "/";
 }
 

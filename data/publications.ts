@@ -53,6 +53,23 @@ export function publications(lang: Lang): PublicationYear[] {
             "In: IEEE/ACM 13th International Conference on Mobile Software Engineering and Systems (MOBILESoft), 2026, Rio de Janeiro. Proceedings. 2026.",
           doi: "10.1145/3795077.3795116",
         },
+        {
+          kind: "conference",
+          authors: "NIEMIEC, WILLIAM ; TAVARES, A. R. ; COTA, E.",
+          title: "Using LLMs to generate mHealth applications",
+          venue:
+            "In: Escola Regional de Aprendizado de Máquina e Inteligência Artificial da Região Sul (ERAMIA-RS), 2026, Porto Alegre. Anais. Porto Alegre: Sociedade Brasileira de Computação, 2026. p. 25-28.",
+          doi: "10.5753/eramiars.2026.35112",
+        },
+        {
+          kind: "conference",
+          authors: "MIRANDA, C. ; JACINTO, P. ; NIEMIEC, WILLIAM ; COTA, E.",
+          title:
+            "Medical Prescription Data Extraction Using OCR and LLM for Import into the Takere Platform",
+          venue:
+            "In: Escola Regional de Aprendizado de Máquina e Inteligência Artificial da Região Sul (ERAMIA-RS), 2026, Porto Alegre. Anais. Porto Alegre: Sociedade Brasileira de Computação, 2026. p. 460-463.",
+          doi: "10.5753/eramiars.2026.35757",
+        },
       ],
     },
     {
