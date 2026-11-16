@@ -3,18 +3,13 @@ import { ChipRoot } from "@heroui/react/chip";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import ResearchLayout from "@/components/ResearchLayout";
-import { publications, type PublicationKind } from "@/data/publications";
+import { publications } from "@/data/publications";
 import { getDictionary, type Lang } from "@/i18n";
 import { breadcrumbJsonLd, pageMetadata, publicationsJsonLd } from "@/lib/metadata";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/publications">) {
   return pageMetadata((await params).lang as Lang, "publications");
 }
-
-const chipColor = { journal: "success", conference: "accent", thesis: "default" } as const satisfies Record<
-  PublicationKind,
-  string
->;
 
 const ArrowIcon = () => (
   <svg viewBox="0 0 16 16" className="size-3.5" aria-hidden="true">
@@ -65,7 +60,7 @@ export default async function Page({ params }: PageProps<"/[lang]/publications">
                       <ChipRoot
                         size="sm"
                         variant="soft"
-                        color={chipColor[item.kind]}
+                        color="success"
                         className="self-start font-display font-semibold tracking-wide uppercase"
                       >
                         {t.kinds[item.kind]}

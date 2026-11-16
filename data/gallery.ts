@@ -14,9 +14,13 @@ const photo = (file: string, width: number, height: number, alt: Localized): Gal
   height,
 });
 
-/** Photos shown on /gallery, two per row (each row is laid out as a justified strip). */
+/** Photos shown on /gallery, newest first, two or three per row (each row is laid out as a justified strip). */
 export const galleryRows: GalleryPhoto[][] = [
   [
+    photo("09.jpeg", 960, 1280, {
+      pt: "Apresentação no Simpósio da SBRAFH2",
+      en: "Presentation at the SBRAFH2 Symposium",
+    }),
     photo("01.jpeg", 1280, 960, { pt: "Equipe do grupo de pesquisa Takere", en: "Takere research group team" }),
     photo("02.jpeg", 720, 1280, { pt: "Membros do grupo de pesquisa Takere", en: "Takere research group members" }),
   ],
@@ -36,10 +40,6 @@ export const galleryRows: GalleryPhoto[][] = [
     photo("08.jpeg", 1600, 1200, {
       pt: "Workshop Takere-Posto de Saúde Santa Marta RS",
       en: "Takere workshop at Santa Marta Health Center, RS",
-    }),
-    photo("09.jpeg", 960, 1280, {
-      pt: "Apresentação no Simpósio da SBRAFH2",
-      en: "Presentation at the SBRAFH2 Symposium",
     }),
   ],
 ];
