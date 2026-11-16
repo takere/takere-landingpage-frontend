@@ -5,7 +5,6 @@ import SectionTitle from "@/components/SectionTitle";
 import { galleryRows } from "@/data/gallery";
 import { getDictionary, type Lang } from "@/i18n";
 import { pageMetadata } from "@/lib/metadata";
-import styles from "./page.module.css";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/gallery">) {
   return pageMetadata((await params).lang as Lang, "gallery");
@@ -19,8 +18,8 @@ export default async function Page({ params }: PageProps<"/[lang]/gallery">) {
   return (
     <>
       <ResearchLayout lang={lang}>
-        <main id="main" className={styles.page}>
-          <SectionTitle edge="left" as="h1" className={styles.title}>
+        <main id="main" className="container-site pt-10 pb-20 mobile:pt-5 mobile:pb-10">
+          <SectionTitle edge="left" as="h1" className="text-[40px] uppercase">
             {t.title}
           </SectionTitle>
           <Gallery rows={rows} labels={{ photo: t.photo, ...t.labels }} />

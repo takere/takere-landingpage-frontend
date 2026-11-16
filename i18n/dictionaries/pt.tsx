@@ -11,7 +11,7 @@ const pt = {
       gallery: "Galeria",
       contact: "Contato",
     },
-    partners: "Em parceria com",
+    partners: "Em colaboração com",
     stats: { students: "Estudantes", supervisions: "Orientações", publications: "Publicações" },
     footer: {
       contact: "Entre em contato",

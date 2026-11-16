@@ -12,7 +12,7 @@ const en: Dictionary = {
       gallery: "Gallery",
       contact: "Contact",
     },
-    partners: "In partnership with",
+    partners: "In collaboration with",
     stats: { students: "Students", supervisions: "Supervisions", publications: "Publications" },
     footer: {
       contact: "Get in touch",

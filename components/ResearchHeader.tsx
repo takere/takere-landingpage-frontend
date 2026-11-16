@@ -1,11 +1,11 @@
 "use client";
 
+import { Tabs } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { href, type Lang } from "@/i18n/config";
 import type { Dictionary } from "@/i18n";
-import styles from "./ResearchHeader.module.css";
 
 const items = [
   { key: "home", path: "/research" },
@@ -17,34 +17,38 @@ const items = [
 
 export default function ResearchHeader({ lang, t }: { lang: Lang; t: Dictionary["common"]["researchNav"] }) {
   const pathname = usePathname();
+  const selected = items.find(({ path }) => pathname === href(lang, path))?.key ?? "home";
 
   return (
-    <div className={styles.header}>
-      <Link href={href(lang, "/research")} className={styles.logo}>
+    <div className="flex flex-col items-center gap-3 bg-background pt-4 pb-3 mobile:gap-0 mobile:pt-1 mobile:pb-3">
+      <Link href={href(lang, "/research")} className="rounded-lg">
         <Image
-          src="/img/brand/research-lab-logo.webp"
-          alt="takere research lab"
-          width={538}
-          height={63}
+          src="/img/brand/takere-research-lab.png"
+          alt="Takere Research Lab"
+          width={2274}
+          height={267}
+          sizes="(max-width: 760px) 392px, 538px"
+          className="h-auto w-[min(538px,calc(100vw-32px))] mobile:w-70"
           priority
         />
       </Link>
-      <nav aria-label="Research Lab" className={styles.nav}>
-        {items.map(({ key, path }) => {
-          const target = href(lang, path);
-          const active = pathname === target;
-          return (
-            <Link
-              key={key}
-              href={target}
-              className={active ? styles.active : undefined}
-              aria-current={active ? "page" : undefined}
-            >
-              {t[key]}
-            </Link>
-          );
-        })}
-      </nav>
+      <Tabs selectedKey={selected} variant="secondary" className="mobile:hidden">
+        <Tabs.ListContainer>
+          <Tabs.List aria-label="Research Lab">
+            {items.map(({ key, path }) => (
+              <Tabs.Tab
+                key={key}
+                id={key}
+                href={href(lang, path)}
+                className="px-5 font-display text-sm font-medium tracking-wider uppercase"
+              >
+                {t[key]}
+                <Tabs.Indicator className="bg-green" />
+              </Tabs.Tab>
+            ))}
+          </Tabs.List>
+        </Tabs.ListContainer>
+      </Tabs>
     </div>
   );
 }
