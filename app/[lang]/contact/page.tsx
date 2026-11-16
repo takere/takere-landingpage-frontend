@@ -2,11 +2,12 @@ import { CardContent, CardDescription, CardHeader, CardRoot, CardTitle } from "@
 import { LinkRoot } from "@heroui/react/link";
 import type { ReactNode } from "react";
 import Footer from "@/components/Footer";
+import JsonLd from "@/components/JsonLd";
 import ResearchLayout from "@/components/ResearchLayout";
 import SectionTitle from "@/components/SectionTitle";
 import { addressLines, CONTACT_EMAIL, contacts, MAP_EMBED_URL } from "@/data/contact";
 import { getDictionary, type Lang } from "@/i18n";
-import { pageMetadata } from "@/lib/metadata";
+import { breadcrumbJsonLd, pageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/contact">) {
   return pageMetadata((await params).lang as Lang, "contact");
@@ -118,6 +119,7 @@ export default async function Page({ params }: PageProps<"/[lang]/contact">) {
         </main>
       </ResearchLayout>
       <Footer lang={lang} />
+      <JsonLd data={breadcrumbJsonLd(lang, "contact")} />
     </>
   );
 }

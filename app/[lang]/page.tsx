@@ -1,11 +1,11 @@
-import { AvatarFallback, AvatarImage, AvatarRoot } from "@heroui/react/avatar";
 import { CardContent, CardDescription, CardRoot, CardTitle } from "@heroui/react/card";
 import { ChipLabel, ChipRoot } from "@heroui/react/chip";
 import { LinkRoot } from "@heroui/react/link";
 import { TooltipContent, TooltipRoot } from "@heroui/react/tooltip";
 import { buttonVariants } from "@heroui/styles";
-import Image, { getImageProps } from "next/image";
+import Image from "next/image";
 import Footer from "@/components/Footer";
+import PersonAvatar from "@/components/PersonAvatar";
 import Partners from "@/components/Partners";
 import SectionTitle from "@/components/SectionTitle";
 import Stats from "@/components/Stats";
@@ -18,14 +18,6 @@ import { pageMetadata } from "@/lib/metadata";
 export async function generateMetadata({ params }: PageProps<"/[lang]">) {
   return pageMetadata((await params).lang as Lang, "home");
 }
-
-const initials = (name: string) =>
-  name
-    .split(" ")
-    .filter((w) => /^[A-ZÀ-Ú]/.test(w))
-    .map((w) => w[0])
-    .slice(0, 2)
-    .join("");
 
 /* Shared prose styles for the research/team paragraphs. */
 const prose = "font-display leading-loose text-justify mobile:text-u-16 mobile:leading-[calc(28.8*var(--u))]";
@@ -198,14 +190,15 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
           <div className="mt-16 grid grid-cols-3 gap-8 max-[900px]:gap-4 mobile:mt-10 mobile:grid-cols-[minmax(0,1fr)] mobile:gap-6">
             {coordinators.map((c) => {
               const name = c.name[lang];
-              const { props: photo } = getImageProps({ src: c.photo, alt: name, width: 256, height: 256 });
               return (
                 <article key={c.linkedin} data-reveal="up">
                   <CardRoot className="h-full items-center gap-3 shadow-none px-5 pt-8 pb-6 text-center font-display">
-                    <AvatarRoot className="size-40 ring-4 ring-green-light ring-offset-4 ring-offset-surface mobile:size-30">
-                      <AvatarImage {...photo} className="object-cover" />
-                      <AvatarFallback className="text-3xl font-bold">{initials(name)}</AvatarFallback>
-                    </AvatarRoot>
+                    <PersonAvatar
+                      src={c.photo}
+                      name={name}
+                      size={256}
+                      className="size-40 ring-4 ring-green-light ring-offset-4 ring-offset-surface mobile:size-30"
+                    />
                     {/* CardTitle renders an <h3>. */}
                     <CardTitle className="mt-3 text-2xl font-bold text-ink mobile:text-u-24">{name}</CardTitle>
                     <CardDescription className="text-base leading-normal font-semibold mobile:text-u-17">

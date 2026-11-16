@@ -1,7 +1,8 @@
 import { SeparatorRoot } from "@heroui/react/separator";
 import Footer from "@/components/Footer";
+import JsonLd from "@/components/JsonLd";
 import { getDictionary, type Lang } from "@/i18n";
-import { pageMetadata } from "@/lib/metadata";
+import { breadcrumbJsonLd, pageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/policy">) {
   return pageMetadata((await params).lang as Lang, "policy");
@@ -67,6 +68,7 @@ export default async function Page({ params }: PageProps<"/[lang]/policy">) {
         ))}
       </main>
       <Footer lang={lang} />
+      <JsonLd data={breadcrumbJsonLd(lang, "policy")} />
     </>
   );
 }

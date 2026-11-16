@@ -1,6 +1,9 @@
 export const locales = ["pt", "en"] as const;
 export const defaultLocale = "pt";
 
+/** Request header set by middleware with the locale of the requested URL. */
+export const LANG_HEADER = "x-takere-lang";
+
 export type Lang = (typeof locales)[number];
 
 /** A value that varies per language, e.g. `{ pt: "Equipe", en: "Team" }`. */

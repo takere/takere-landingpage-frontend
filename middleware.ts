@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { defaultLocale, locales } from "@/i18n/config";
+import { defaultLocale, isLang, LANG_HEADER } from "@/i18n/config";
 
 /**
  * Routes live under app/[lang]. Portuguese (default) URLs have no prefix, so
@@ -16,11 +16,15 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url, 308);
   }
 
-  if ((locales as readonly string[]).includes(first)) return NextResponse.next();
+  // Tells app/global-not-found.tsx which language to render (it receives no route params).
+  const headers = new Headers(request.headers);
+  headers.set(LANG_HEADER, isLang(first) ? first : defaultLocale);
+
+  if (isLang(first)) return NextResponse.next({ request: { headers } });
 
   const url = request.nextUrl.clone();
   url.pathname = `/${defaultLocale}${pathname === "/" ? "" : pathname}`;
-  return NextResponse.rewrite(url);
+  return NextResponse.rewrite(url, { request: { headers } });
 }
 
 export const config = {

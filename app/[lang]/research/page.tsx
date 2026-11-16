@@ -3,6 +3,7 @@ import { buttonVariants } from "@heroui/styles";
 import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/Footer";
+import JsonLd from "@/components/JsonLd";
 import Partners from "@/components/Partners";
 import ResearchLayout from "@/components/ResearchLayout";
 import SectionTitle from "@/components/SectionTitle";
@@ -10,7 +11,7 @@ import Stats from "@/components/Stats";
 import { researchAreas } from "@/data/research";
 import { getDictionary, href, type Lang } from "@/i18n";
 import { cn } from "@/lib/cn";
-import { pageMetadata } from "@/lib/metadata";
+import { breadcrumbJsonLd, pageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/research">) {
   return pageMetadata((await params).lang as Lang, "research");
@@ -61,6 +62,7 @@ export default async function Page({ params }: PageProps<"/[lang]/research">) {
                   className="mb-4.5 self-start text-[40px] mobile:mb-5.5 mobile:text-u-22 mobile:after:right-0 mobile:after:left-auto mobile:after:w-screen"
                 >
                   {t.groupTitle}
+                  <span className="sr-only">{t.groupTitleContext}</span>
                 </SectionTitle>
                 <p className="text-sm leading-[1.85] text-ink mobile:text-u-16 mobile:leading-[1.8]">{t.groupText}</p>
                 <Link
@@ -129,6 +131,7 @@ export default async function Page({ params }: PageProps<"/[lang]/research">) {
         </main>
       </ResearchLayout>
       <Footer lang={lang} />
+      <JsonLd data={breadcrumbJsonLd(lang, "research")} />
     </>
   );
 }

@@ -49,29 +49,29 @@ const pt = {
       home: {
         title: "Takere | Cuidado Individualizado ao seu Paciente",
         description:
-          "Grupo de pesquisa do Instituto de Informática da UFRGS, em parceria com o HCPA, focado em manter pacientes engajados no tratamento com uma plataforma simples para personalização do plano de cuidado.",
+          "Grupo de pesquisa da UFRGS e do HCPA que desenvolve uma plataforma mHealth para personalizar o plano de cuidado e manter pacientes engajados no tratamento.",
       },
       research: {
-        title: "Pesquisa | Takere",
+        title: "Pesquisa em Saúde Digital e mHealth | Takere",
         description:
-          "Conheça o Takere Research Lab (UFRGS/HCPA): linhas de pesquisa em mHealth, IA, interfaces conversacionais, HL7/FHIR, privacidade de dados e adesão ao tratamento.",
+          "Takere Research Lab (UFRGS/HCPA): pesquisa em mHealth, IA, interfaces conversacionais, HL7 FHIR, privacidade de dados e adesão ao tratamento.",
       },
       team: {
-        title: "Equipe | Pesquisa | Takere",
+        title: "Equipe do Grupo de Pesquisa | Takere",
         description:
           "Coordenadores, membros e membros anteriores do grupo de pesquisa Takere, do Instituto de Informática da UFRGS, em parceria com o HCPA.",
       },
       publications: {
-        title: "Publicações | Pesquisa | Takere",
+        title: "Publicações em Saúde Digital | Takere",
         description:
           "Artigos, trabalhos de conclusão e outras publicações do grupo de pesquisa Takere sobre saúde digital e mHealth, organizados por ano.",
       },
       gallery: {
-        title: "Galeria | Pesquisa | Takere",
+        title: "Galeria de Fotos | Takere",
         description: "Fotos do grupo de pesquisa Takere: eventos, apresentações e encontros da equipe da UFRGS e do HCPA.",
       },
       contact: {
-        title: "Contato | Pesquisa | Takere",
+        title: "Contato | Takere Research Lab",
         description:
           "Entre em contato com o grupo de pesquisa Takere: e-mail e endereço no Instituto de Informática da UFRGS, em Porto Alegre.",
       },
@@ -153,6 +153,7 @@ const pt = {
     groupTitle: "Conheça o nosso grupo",
     groupText:
       "Nossa sede é no Instituto de Informática da Universidade Federal do Rio Grande do Sul. Mantemos uma parceria constante com o Hospital de Clínicas de Porto Alegre, e nossa pesquisa é interdisciplinar e conta com a participação de estudantes de informática e saúde, com o objetivo de estudar técnicas para melhorar o cuidado à saúde.",
+    groupTitleContext: " — Takere Research Lab, grupo de pesquisa em saúde digital",
     groupCta: "Conheça nossa equipe",
     groupAlt: "equipe da takere no hcpa",
     linesTitle: "Linhas de Pesquisa",
@@ -160,7 +161,7 @@ const pt = {
       "Nosso foco está em buscar soluções que melhorem a adesão e monitoramento do tratamento de pacientes por meio da tecnologia.",
   },
 
-  team: { coordinators: "Coordenadores", members: "Membros", former: "Membros anteriores" },
+  team: { title: "Equipe do Takere Research Lab", coordinators: "Coordenadores", members: "Membros", former: "Membros anteriores" },
 
   publications: {
     title: "Publicações",
@@ -170,8 +171,16 @@ const pt = {
 
   gallery: {
     title: "Galeria",
+    intro:
+      "Registros de oficinas, apresentações e encontros do grupo de pesquisa Takere com estudantes, profissionais de saúde e pacientes da UFRGS e do HCPA.",
     photo: "Foto",
     labels: { close: "Fechar", prev: "Anterior", next: "Próxima" },
+  },
+
+  notFound: {
+    title: "Página não encontrada",
+    text: "O endereço que você acessou não existe ou foi movido.",
+    home: "Voltar para o início",
   },
 
   contact: {

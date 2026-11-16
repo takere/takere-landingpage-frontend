@@ -1,10 +1,11 @@
 import { CardRoot } from "@heroui/react/card";
 import { ChipRoot } from "@heroui/react/chip";
 import Footer from "@/components/Footer";
+import JsonLd from "@/components/JsonLd";
 import ResearchLayout from "@/components/ResearchLayout";
 import { publications, type PublicationKind } from "@/data/publications";
 import { getDictionary, type Lang } from "@/i18n";
-import { pageMetadata } from "@/lib/metadata";
+import { breadcrumbJsonLd, pageMetadata, publicationsJsonLd } from "@/lib/metadata";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/publications">) {
   return pageMetadata((await params).lang as Lang, "publications");
@@ -24,13 +25,14 @@ const ArrowIcon = () => (
 export default async function Page({ params }: PageProps<"/[lang]/publications">) {
   const lang = (await params).lang as Lang;
   const t = getDictionary(lang).publications;
+  const years = publications(lang);
 
   return (
     <>
       <ResearchLayout lang={lang}>
         <main id="main" className="container-site flex flex-col gap-16 pt-12 pb-20 mobile:gap-10 mobile:pt-6 mobile:pb-10">
           <h1 className="sr-only">{t.title}</h1>
-          {publications(lang).map((group) => (
+          {years.map((group) => (
             <section
               key={group.year}
               aria-labelledby={`year-${group.year}`}
@@ -96,6 +98,8 @@ export default async function Page({ params }: PageProps<"/[lang]/publications">
         </main>
       </ResearchLayout>
       <Footer lang={lang} />
+      <JsonLd data={breadcrumbJsonLd(lang, "publications")} />
+      <JsonLd data={publicationsJsonLd(lang, years.flatMap((g) => g.items.map((p) => ({ ...p, year: g.year }))))} />
     </>
   );
 }

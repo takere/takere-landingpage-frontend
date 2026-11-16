@@ -50,29 +50,29 @@ const en: Dictionary = {
       home: {
         title: "Takere | Individualized Care for Your Patient",
         description:
-          "Research group at the Institute of Informatics (UFRGS), in partnership with HCPA, focused on keeping patients engaged in treatment with a simple platform for personalizing care plans.",
+          "UFRGS and HCPA research group building an mHealth platform to personalize care plans and keep patients engaged in their treatment.",
       },
       research: {
-        title: "Research | Takere",
+        title: "Digital Health & mHealth Research | Takere",
         description:
-          "Discover the Takere Research Lab (UFRGS/HCPA): research areas in mHealth, AI, conversational interfaces, HL7/FHIR, data privacy and treatment adherence.",
+          "Takere Research Lab (UFRGS/HCPA): research in mHealth, AI, conversational interfaces, HL7 FHIR, data privacy and treatment adherence.",
       },
       team: {
-        title: "Team | Research | Takere",
+        title: "Research Group Team | Takere",
         description:
           "Coordinators, members and former members of the Takere research group at the Institute of Informatics (UFRGS), in partnership with HCPA.",
       },
       publications: {
-        title: "Publications | Research | Takere",
+        title: "Digital Health Publications | Takere",
         description:
           "Papers, theses and other publications by the Takere research group on digital health and mHealth, organized by year.",
       },
       gallery: {
-        title: "Gallery | Research | Takere",
+        title: "Photo Gallery | Takere",
         description: "Photos of the Takere research group: events, presentations and team meetings at UFRGS and HCPA.",
       },
       contact: {
-        title: "Contact | Research | Takere",
+        title: "Contact | Takere Research Lab",
         description:
           "Get in touch with the Takere research group: email and address at the Institute of Informatics, UFRGS, Porto Alegre, Brazil.",
       },
@@ -154,6 +154,7 @@ const en: Dictionary = {
     groupTitle: "Meet our group",
     groupText:
       "Our headquarters are located at the Institute of Informatics of the Federal University of Rio Grande do Sul. We maintain an ongoing partnership with the Hospital de Clínicas de Porto Alegre, and our research is interdisciplinary, involving students from computer science and health sciences, with the goal of studying techniques to improve healthcare.",
+    groupTitleContext: " — Takere Research Lab, a digital health research group",
     groupCta: "Meet our team",
     groupAlt: "takere team at hcpa",
     linesTitle: "Research Areas",
@@ -161,7 +162,7 @@ const en: Dictionary = {
       "Our focus is on finding solutions that improve patient adherence to and monitoring of treatment through technology.",
   },
 
-  team: { coordinators: "Coordinators", members: "Members", former: "Former members" },
+  team: { title: "Takere Research Lab team", coordinators: "Coordinators", members: "Members", former: "Former members" },
 
   publications: {
     title: "Publications",
@@ -171,8 +172,16 @@ const en: Dictionary = {
 
   gallery: {
     title: "Gallery",
+    intro:
+      "Workshops, presentations and meetings of the Takere research group with students, healthcare professionals and patients at UFRGS and HCPA.",
     photo: "Photo",
     labels: { close: "Close", prev: "Previous", next: "Next" },
+  },
+
+  notFound: {
+    title: "Page not found",
+    text: "The page you are looking for does not exist or has been moved.",
+    home: "Back to home",
   },
 
   contact: {

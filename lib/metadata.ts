@@ -5,6 +5,7 @@ import { ogSize } from "./ogImage";
 
 export const SITE_URL = "https://www.takere.com.br";
 export const SITE_NAME = "Takere";
+const ORG_ID = `${SITE_URL}/#organization`;
 
 export type PageKey = keyof Dictionary["seo"]["pages"];
 
@@ -22,7 +23,6 @@ export const ROUTES: Record<PageKey, string> = {
 export const siteMetadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   applicationName: SITE_NAME,
-  icons: { icon: "/img/brand/icon.png", apple: "/img/brand/icon.png" },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } },
   formatDetection: { email: false, address: false, telephone: false },
 };
@@ -64,7 +64,7 @@ export function organizationJsonLd(lang: Lang) {
     "@graph": [
       {
         "@type": "ResearchOrganization",
-        "@id": `${SITE_URL}/#organization`,
+        "@id": ORG_ID,
         name: SITE_NAME,
         alternateName: "Takere Research Lab",
         url: SITE_URL,
@@ -92,8 +92,98 @@ export function organizationJsonLd(lang: Lang) {
         name: SITE_NAME,
         url: SITE_URL,
         inLanguage: ["pt-BR", "en"],
-        publisher: { "@id": `${SITE_URL}/#organization` },
+        publisher: { "@id": ORG_ID },
       },
     ],
+  };
+}
+
+const absoluteUrl = (path: string) => `${SITE_URL}${path === "/" ? "" : path}`;
+
+/** Pages that sit under the "Research" section in the breadcrumb trail. */
+const RESEARCH_CHILDREN: PageKey[] = ["team", "publications", "gallery", "contact"];
+
+/** Schema.org BreadcrumbList for an inner page (Home › [Research ›] Page). */
+export function breadcrumbJsonLd(lang: Lang, page: Exclude<PageKey, "home">) {
+  const { common, seo } = getDictionary(lang);
+  const trail: { name: string; path: string }[] = [{ name: common.nav.home, path: href(lang, "/") }];
+  if (page === "research" || RESEARCH_CHILDREN.includes(page)) {
+    trail.push({ name: common.nav.research, path: href(lang, ROUTES.research) });
+  }
+  if (page !== "research") {
+    const name = page === "policy" ? common.footer.policy : common.researchNav[page as keyof typeof common.researchNav];
+    trail.push({ name: name ?? seo.pages[page].title, path: href(lang, ROUTES[page]) });
+  }
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: trail.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      item: absoluteUrl(item.path),
+    })),
+  };
+}
+
+interface PersonInput {
+  name: string;
+  photo: string;
+  jobTitle?: string;
+  sameAs?: string[];
+}
+
+/** Schema.org Person entries for the team, all linked to the research organization. */
+export function peopleJsonLd(people: PersonInput[]) {
+  return {
+    "@context": "https://schema.org",
+    "@graph": people.map((p) => ({
+      "@type": "Person",
+      name: p.name,
+      image: absoluteUrl(p.photo),
+      ...(p.jobTitle && { jobTitle: p.jobTitle }),
+      ...(p.sameAs?.length && { sameAs: p.sameAs }),
+      memberOf: { "@id": ORG_ID },
+    })),
+  };
+}
+
+interface PublicationInput {
+  kind: "journal" | "conference" | "thesis";
+  year: string;
+  authors: string;
+  title: string;
+  venue: string;
+  doi?: string;
+}
+
+/** "NIEMIEC, WILLIAM ; TAVARES, A. R." -> Person list (names kept as written in the citation). */
+const citationAuthors = (authors: string) =>
+  authors
+    .split(";")
+    .map((a) => a.trim())
+    .filter(Boolean)
+    .map((name) => ({ "@type": "Person", name }));
+
+/** Schema.org ItemList of the group's publications (ScholarlyArticle / Thesis). */
+export function publicationsJsonLd(lang: Lang, items: PublicationInput[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: items.map((p, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": p.kind === "thesis" ? "Thesis" : "ScholarlyArticle",
+        headline: p.title,
+        name: p.title,
+        author: citationAuthors(p.authors),
+        datePublished: p.year,
+        inLanguage: lang === "pt" ? "pt-BR" : "en",
+        description: p.venue,
+        ...(p.doi && { url: `https://doi.org/${p.doi}`, sameAs: `https://doi.org/${p.doi}` }),
+        sourceOrganization: { "@id": ORG_ID },
+      },
+    })),
   };
 }

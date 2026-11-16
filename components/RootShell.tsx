@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { getDictionary, type Lang } from "@/i18n";
 import { organizationJsonLd } from "@/lib/metadata";
 import BackToTop from "./BackToTop";
+import JsonLd from "./JsonLd";
 import RevealObserver from "./RevealObserver";
 import Providers from "./Providers";
 import TopBar from "./TopBar";
@@ -23,10 +24,7 @@ export default function RootShell({ lang, children }: { lang: Lang; children: Re
       <body className="bg-background font-sans text-foreground antialiased">
         {/* Hide reveal targets only when JS is available to animate them in. */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd(lang)).replace(/</g, "\\u003c") }}
-        />
+        <JsonLd data={organizationJsonLd(lang)} />
         <a
           href="#main"
           className="sr-only z-[100] rounded-lg bg-navy px-4 py-2 text-white focus:not-sr-only focus:fixed focus:top-2 focus:left-2"

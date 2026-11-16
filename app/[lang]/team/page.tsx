@@ -1,35 +1,18 @@
-import { AvatarFallback, AvatarImage, AvatarRoot } from "@heroui/react/avatar";
 import { CardDescription, CardFooter, CardHeader, CardRoot, CardTitle } from "@heroui/react/card";
 import { LinkRoot } from "@heroui/react/link";
 import { TooltipContent, TooltipRoot } from "@heroui/react/tooltip";
-import Image, { getImageProps } from "next/image";
+import Image from "next/image";
 import Footer from "@/components/Footer";
+import JsonLd from "@/components/JsonLd";
+import PersonAvatar from "@/components/PersonAvatar";
 import ResearchLayout from "@/components/ResearchLayout";
 import SectionTitle from "@/components/SectionTitle";
 import { coordinators, formerMembers, members, type Member } from "@/data/team";
 import { getDictionary, type Lang } from "@/i18n";
-import { cn } from "@/lib/cn";
-import { pageMetadata } from "@/lib/metadata";
+import { breadcrumbJsonLd, pageMetadata, peopleJsonLd } from "@/lib/metadata";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/team">) {
   return pageMetadata((await params).lang as Lang, "team");
-}
-
-/** "Érika F. Cota" → "ÉC": first and last name, skipping abbreviated middle names. */
-function initials(name: string) {
-  const words = name.split(/\s+/).filter((w) => w && !w.endsWith("."));
-  return ((words[0]?.[0] ?? "") + (words.length > 1 ? words[words.length - 1][0] : "")).toUpperCase();
-}
-
-/** HeroUI Avatar fed by Next's image optimizer (team photos are up to ~400KB originals). */
-function PersonAvatar({ src, name, size, className }: { src: string; name: string; size: number; className?: string }) {
-  const { props } = getImageProps({ src, alt: name, width: size, height: size });
-  return (
-    <AvatarRoot className={cn("shrink-0 ring-4 ring-green-light ring-offset-2 ring-offset-surface", className)}>
-      <AvatarImage {...props} className="object-cover" />
-      <AvatarFallback className="font-display font-bold">{initials(name)}</AvatarFallback>
-    </AvatarRoot>
-  );
 }
 
 const sectionClass = "container-site py-10 mobile:max-w-80 mobile:px-5 mobile:pt-5 mobile:pb-7.5";
@@ -42,8 +25,9 @@ export default async function Page({ params }: PageProps<"/[lang]/team">) {
     <>
       <ResearchLayout lang={lang}>
         <main id="main">
+          <h1 className="sr-only">{t.title}</h1>
           <section className={sectionClass}>
-            <SectionTitle edge="left" as="h1">
+            <SectionTitle edge="left">
               {t.coordinators}
             </SectionTitle>
             <div className="mt-14 grid grid-cols-3 gap-8 mobile:mt-10 mobile:grid-cols-[minmax(0,1fr)] mobile:gap-6">
@@ -58,10 +42,10 @@ export default async function Page({ params }: PageProps<"/[lang]/team">) {
                       src={c.photo}
                       name={c.name[lang]}
                       size={256}
-                      className="mb-6 size-40 rounded-full ring-white ring-offset-0 shadow-lg mobile:mb-3 mobile:size-28"
+                      className="mb-6 size-40 rounded-full ring-4 ring-offset-2 ring-white ring-offset-0 shadow-lg mobile:mb-3 mobile:size-28"
                     />
                     <CardHeader className="items-center gap-1">
-                      <h2 className="font-display text-2xl font-bold text-ink mobile:text-u-25">{c.name[lang]}</h2>
+                      <h3 className="font-display text-2xl font-bold text-ink mobile:text-u-25">{c.name[lang]}</h3>
                       <CardDescription className="text-base leading-snug font-semibold text-muted mobile:text-u-18">
                         {c.degree[lang]}
                         <br />
@@ -97,6 +81,18 @@ export default async function Page({ params }: PageProps<"/[lang]/team">) {
         </main>
       </ResearchLayout>
       <Footer lang={lang} />
+      <JsonLd data={breadcrumbJsonLd(lang, "team")} />
+      <JsonLd
+        data={peopleJsonLd([
+          ...coordinators.map((c) => ({
+            name: c.name[lang],
+            photo: c.photo,
+            jobTitle: c.degree[lang],
+            sameAs: [c.orcid, c.lattes, c.linkedin],
+          })),
+          ...members(lang).map((m) => ({ name: m.name, photo: m.photo, jobTitle: m.lines[0] })),
+        ])}
+      />
     </>
   );
 }
@@ -134,7 +130,7 @@ function MemberGrid({ people }: { people: Member[] }) {
               src={m.photo}
               name={m.name}
               size={128}
-              className="size-28 rounded-full transition-shadow duration-300 group-hover:ring-green mobile:size-20"
+              className="size-28 rounded-full ring-4 ring-green-light ring-offset-2 ring-offset-surface transition-shadow duration-300 group-hover:ring-green mobile:size-20"
             />
             <CardHeader className="items-center gap-1 mobile:items-start">
               <CardTitle className="font-display text-lg font-bold text-ink mobile:text-u-19">{m.name}</CardTitle>
