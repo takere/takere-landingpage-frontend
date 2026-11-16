@@ -6,6 +6,7 @@
     "dev": "node --env-file-if-exists=.env node_modules/next/dist/bin/next dev",
     "build": "next build && node scripts/flatten-default-locale.mjs",
     "start": "node --env-file-if-exists=.env node_modules/next/dist/bin/next start",
+    "preview": "serve out",
     "lint": "eslint"
   },
   "dependencies": {
@@ -30,6 +31,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.5.27",
+    "serve": "^14.2.8",
     "tailwindcss": "^4.3.5",
     "typescript": "^5"
   },
