@@ -69,7 +69,7 @@ export default function Gallery({ rows, labels }: { rows: Photo[][]; labels: Lab
                 <button
                   key={p.src}
                   type="button"
-                  className="group min-w-0 basis-0 cursor-zoom-in overflow-hidden rounded-2xl shadow-sm outline-none focus-visible:ring-2 focus-visible:ring-green focus-visible:ring-offset-2 mobile:!flex-none"
+                  className="group relative min-w-0 basis-0 cursor-zoom-in overflow-hidden rounded-2xl shadow-sm outline-none focus-visible:ring-2 focus-visible:ring-green focus-visible:ring-offset-2 mobile:!flex-none"
                   style={{ flexGrow: p.width / p.height }}
                   onClick={() => {
                     setCurrent(i);
@@ -85,6 +85,14 @@ export default function Gallery({ rows, labels }: { rows: Photo[][]; labels: Lab
                     sizes="(max-width: 760px) 100vw, 680px"
                     className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.03] mobile:h-auto"
                   />
+                  {p.alt && (
+                    <span
+                      aria-hidden="true"
+                      className="pointer-events-none absolute inset-x-0 bottom-0 bg-linear-to-t from-navy-dark/90 via-navy-dark/50 to-transparent px-4 pt-12 pb-3.5 text-left font-display text-sm leading-snug font-semibold text-white mobile:px-3 mobile:pt-10 mobile:pb-3 mobile:text-u-13"
+                    >
+                      {p.alt}
+                    </span>
+                  )}
                 </button>
               );
             })}

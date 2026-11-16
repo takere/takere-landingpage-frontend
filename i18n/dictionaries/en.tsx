@@ -159,12 +159,15 @@ const en: Dictionary = {
     linesTitle: "Research Areas",
     linesIntro:
       "Our focus is on finding solutions that improve patient adherence to and monitoring of treatment through technology.",
-    linesCurrent: "Currently, our research focus is on:",
   },
 
   team: { coordinators: "Coordinators", members: "Members", former: "Former members" },
 
-  publications: { title: "Publications" },
+  publications: {
+    title: "Publications",
+    count: { one: "publication", other: "publications" },
+    kinds: { journal: "Journal article", conference: "Conference paper", thesis: "Undergraduate thesis" },
+  },
 
   gallery: {
     title: "Gallery",

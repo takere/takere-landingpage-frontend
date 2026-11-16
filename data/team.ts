@@ -73,6 +73,8 @@ export interface Member {
 const current: MemberData[] = [
   { name: "Arthur A. Kobielski", photo: "arthur-kobielski.png", role: "masters", school: "inf" },
   { name: "Cauã T. D. Miranda", photo: "caua-miranda.jpg", role: "undergrad", school: "inf" },
+  { name: "Felipe A. A. Plentz", photo: "felipe-plentz.png", role: "undergrad", school: "inf" },
+  { name: "Henrique Carniel", photo: "henrique-carniel.png", role: "undergrad", school: "inf" },
   { name: "João Vitor de Souza", photo: "joao-vitor-souza.png", role: "dev" },
   { name: "Júlia Cortes", photo: "julia-cortes.png", role: "undergrad", school: "nursing" },
   { name: "Karina R. Martins", photo: "karina-martins.png", role: "undergrad", school: "inf" },
@@ -117,3 +119,6 @@ function localize(list: MemberData[], lang: Lang): Member[] {
 
 export const members = (lang: Lang) => localize(current, lang);
 export const formerMembers = (lang: Lang) => localize(former, lang);
+
+/** Active members (coordinators are listed separately and not included). */
+export const activeMemberCount = current.length;

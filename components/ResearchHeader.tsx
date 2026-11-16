@@ -20,7 +20,7 @@ export default function ResearchHeader({ lang, t }: { lang: Lang; t: Dictionary[
   const selected = items.find(({ path }) => pathname === href(lang, path))?.key ?? "home";
 
   return (
-    <div className="flex flex-col items-center gap-3 bg-background pt-4 pb-3 mobile:gap-0 mobile:pt-1 mobile:pb-3">
+    <div className="flex flex-col items-center gap-3 border-b border-(--border) bg-background pt-5 pb-0 mobile:gap-0 mobile:border-b-0 mobile:pt-1 mobile:pb-3">
       <Link href={href(lang, "/research")} className="rounded-lg">
         <Image
           src="/img/brand/takere-research-lab.png"
@@ -33,7 +33,7 @@ export default function ResearchHeader({ lang, t }: { lang: Lang; t: Dictionary[
         />
       </Link>
       <Tabs selectedKey={selected} variant="secondary" className="mobile:hidden">
-        <Tabs.ListContainer>
+        <Tabs.ListContainer className="border-b-0!">
           <Tabs.List aria-label="Research Lab">
             {items.map(({ key, path }) => (
               <Tabs.Tab

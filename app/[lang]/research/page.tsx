@@ -1,4 +1,4 @@
-import { CardContent, CardRoot, CardTitle } from "@heroui/react/card";
+import { CardContent, CardRoot } from "@heroui/react/card";
 import { buttonVariants } from "@heroui/styles";
 import Image from "next/image";
 import Link from "next/link";
@@ -33,11 +33,15 @@ export default async function Page({ params }: PageProps<"/[lang]/research">) {
               sizes="100vw"
               className="scale-105 object-cover blur-md mobile:hidden"
             />
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-[radial-gradient(60%_80%_at_15%_10%,rgba(12,177,123,0.35),transparent_60%),linear-gradient(180deg,rgba(0,20,58,0.35),rgba(0,20,58,0.75))] mobile:hidden"
+            />
             <CardRoot
               className={cn(
-                "relative mx-auto grid min-h-98 max-w-261.5 grid-cols-[440px_1fr] gap-0 overflow-hidden p-0 shadow-2xl",
+                "relative mx-auto grid min-h-98 max-w-261.5 grid-cols-[540px_1fr] gap-0 overflow-hidden rounded-[28px] p-0 shadow-2xl ring-1 ring-white/10",
                 "min-[761px]:max-[860px]:grid-cols-1",
-                "mobile:max-w-80 mobile:min-h-0 mobile:grid-cols-[minmax(0,1fr)] mobile:rounded-none mobile:shadow-none",
+                "mobile:max-w-80 mobile:min-h-0 mobile:grid-cols-[minmax(0,1fr)] mobile:rounded-none mobile:shadow-none mobile:ring-0",
               )}
               data-reveal="up"
             >
@@ -46,7 +50,7 @@ export default async function Page({ params }: PageProps<"/[lang]/research">) {
                   src="/img/research/group.jpeg"
                   alt={t.groupAlt}
                   fill
-                  sizes="(max-width: 760px) 100vw, 440px"
+                  sizes="(max-width: 760px) 100vw, 540px"
                   className="object-cover"
                 />
               </div>
@@ -75,38 +79,51 @@ export default async function Page({ params }: PageProps<"/[lang]/research">) {
 
           <Partners lang={lang} />
 
-          <section className="container-site py-10 mobile:max-w-80 mobile:px-5 mobile:pt-0 mobile:pb-5">
+          <section className="container-site py-12 mobile:max-w-80 mobile:px-5 mobile:pt-0 mobile:pb-5">
             <SectionTitle edge="left">{t.linesTitle}</SectionTitle>
-            <div
-              className="mt-4 max-w-190 space-y-8 text-justify font-display leading-loose text-ink min-[1001px]:-ml-15 mobile:mt-6 mobile:space-y-6.75 mobile:text-u-15 mobile:leading-[1.8]"
+            <p
+              className="mt-8 max-w-170 font-display text-xl leading-relaxed text-ink mobile:mt-6 mobile:text-u-16"
               data-reveal="up"
             >
-              <p>{t.linesIntro}</p>
-              <p>{t.linesCurrent}</p>
-            </div>
-            <ul className="mt-12 grid grid-cols-4 gap-x-6 gap-y-8 min-[761px]:max-[860px]:grid-cols-3 mobile:mt-10 mobile:grid-cols-[minmax(0,1fr)] mobile:gap-6">
-              {researchAreas.map((area) => (
-                <li key={area.key} data-reveal="up">
-                  <CardRoot className="group h-full items-center gap-4 p-4 text-center shadow-none transition duration-300 hover:-translate-y-1 mobile:gap-3.5">
-                    <div className="overflow-hidden rounded-full">
-                      <Image
-                        src={`/img/research/${area.key}.jpg`}
-                        alt=""
-                        width={165}
-                        height={165}
-                        className="size-41 object-cover transition-transform duration-300 group-hover:scale-105 mobile:size-40"
-                      />
-                    </div>
-                    <CardTitle className="max-w-50 font-display text-sm leading-snug font-medium text-ink mobile:max-w-66 mobile:text-u-14">
-                      {area.label[lang]}
-                    </CardTitle>
-                  </CardRoot>
+              {t.linesIntro}
+            </p>
+            <ul className="mt-10 grid grid-flow-dense auto-rows-[200px] grid-cols-4 gap-4 min-[761px]:max-[860px]:grid-cols-3 mobile:mt-6 mobile:auto-rows-[calc(var(--u)*130)] mobile:grid-cols-2 mobile:gap-2.5">
+              {researchAreas.map((area, i) => (
+                <li key={area.key} data-reveal="up" className="first:col-span-2 first:row-span-2">
+                  <div className="group relative isolate size-full overflow-hidden rounded-3xl bg-navy shadow-sm ring-1 ring-black/5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_-14px_rgba(0,29,75,0.55)] mobile:rounded-2xl">
+                    <Image
+                      src={`/img/research/${area.key}.jpg`}
+                      alt=""
+                      fill
+                      sizes={i === 0 ? "(max-width: 760px) 100vw, 520px" : "(max-width: 760px) 50vw, 260px"}
+                      className="-z-10 object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                    />
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-0 -z-10 bg-linear-to-t from-navy-dark via-navy-dark/55 to-navy-dark/0 transition-opacity duration-300 group-hover:opacity-90"
+                    />
+                    <span className="absolute top-3 left-3 rounded-full bg-white/15 px-2.5 py-0.5 font-display text-xs font-semibold text-white ring-1 ring-white/25 backdrop-blur-md mobile:top-2 mobile:left-2 mobile:px-2 mobile:text-u-10">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <h3
+                      className={cn(
+                        "absolute inset-x-0 bottom-0 p-4 font-display leading-snug font-semibold text-white mobile:p-2.5",
+                        i === 0 ? "text-2xl mobile:text-u-17" : "text-sm mobile:text-u-12",
+                      )}
+                    >
+                      {area.label[lang].replace(/\.$/, "")}
+                    </h3>
+                    <span
+                      aria-hidden="true"
+                      className="absolute inset-x-0 bottom-0 h-1 origin-left scale-x-0 bg-green transition-transform duration-300 group-hover:scale-x-100"
+                    />
+                  </div>
                 </li>
               ))}
             </ul>
           </section>
 
-          <section className="container-site py-10 mobile:max-w-80 mobile:px-0 mobile:pt-7.5 mobile:pb-8.5">
+          <section className="container-site pt-6 pb-16 mobile:max-w-80 mobile:px-0 mobile:pt-7.5 mobile:pb-8.5">
             <Stats lang={lang} />
           </section>
         </main>

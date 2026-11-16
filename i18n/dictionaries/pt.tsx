@@ -158,12 +158,15 @@ const pt = {
     linesTitle: "Linhas de Pesquisa",
     linesIntro:
       "Nosso foco está em buscar soluções que melhorem a adesão e monitoramento do tratamento de pacientes por meio da tecnologia.",
-    linesCurrent: "Atualmente, nosso foco de pesquisa está em:",
   },
 
   team: { coordinators: "Coordenadores", members: "Membros", former: "Membros anteriores" },
 
-  publications: { title: "Publicações" },
+  publications: {
+    title: "Publicações",
+    count: { one: "publicação", other: "publicações" },
+    kinds: { journal: "Artigo em periódico", conference: "Artigo em conferência", thesis: "Trabalho de conclusão" },
+  },
 
   gallery: {
     title: "Galeria",

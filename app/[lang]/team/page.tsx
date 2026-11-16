@@ -49,12 +49,16 @@ export default async function Page({ params }: PageProps<"/[lang]/team">) {
             <div className="mt-14 grid grid-cols-3 gap-8 mobile:mt-10 mobile:grid-cols-[minmax(0,1fr)] mobile:gap-6">
               {coordinators.map((c) => (
                 <article key={c.linkedin} data-reveal="up">
-                  <CardRoot className="h-full items-center gap-0 shadow-none px-5 pt-8 pb-6 text-center font-display mobile:pt-6 mobile:pb-5">
+                  <CardRoot className="relative isolate h-full items-center gap-0 overflow-hidden border border-black/5 px-5 pt-10 pb-7 text-center font-display shadow-none transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_-16px_rgba(0,29,75,0.35)] mobile:pt-7 mobile:pb-5">
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-x-0 top-0 -z-10 h-32 bg-linear-to-br from-navy via-navy to-green mobile:h-22"
+                    />
                     <PersonAvatar
                       src={c.photo}
                       name={c.name[lang]}
                       size={256}
-                      className="mb-6 size-44 mobile:mb-3 mobile:size-30"
+                      className="mb-6 size-40 rounded-full ring-white ring-offset-0 shadow-lg mobile:mb-3 mobile:size-28"
                     />
                     <CardHeader className="items-center gap-1">
                       <h2 className="font-display text-2xl font-bold text-ink mobile:text-u-25">{c.name[lang]}</h2>
@@ -125,18 +129,25 @@ function MemberGrid({ people }: { people: Member[] }) {
     <ul className="mt-18 grid grid-cols-4 gap-x-6 gap-y-6 min-[761px]:max-[900px]:grid-cols-3 mobile:mt-10 mobile:grid-cols-[minmax(0,1fr)] mobile:gap-4">
       {people.map((m) => (
         <li key={m.name} data-reveal="up">
-          <CardRoot className="h-full items-center gap-3 shadow-none px-4 py-6 text-center font-display mobile:flex-row mobile:gap-4 mobile:px-4 mobile:py-4 mobile:text-left">
-            <PersonAvatar src={m.photo} name={m.name} size={128} className="size-28 mobile:size-20" />
+          <CardRoot className="group h-full items-center gap-3 border border-black/5 px-4 py-6 text-center font-display shadow-none transition duration-300 hover:-translate-y-1 hover:border-green/40 hover:shadow-[0_14px_32px_-14px_rgba(0,29,75,0.3)] mobile:flex-row mobile:gap-4 mobile:px-4 mobile:py-4 mobile:text-left">
+            <PersonAvatar
+              src={m.photo}
+              name={m.name}
+              size={128}
+              className="size-28 rounded-full transition-shadow duration-300 group-hover:ring-green mobile:size-20"
+            />
             <CardHeader className="items-center gap-1 mobile:items-start">
               <CardTitle className="font-display text-lg font-bold text-ink mobile:text-u-19">{m.name}</CardTitle>
-              {m.lines.map((line) => (
-                <CardDescription
-                  key={line}
-                  className="text-[13px] leading-relaxed font-semibold text-muted mobile:text-u-14"
-                >
-                  {line}
+              {m.lines[0] && (
+                <span className="mt-0.5 self-center rounded-full bg-green-light/60 mobile:rounded-lg px-2.5 py-0.5 text-xs font-semibold text-navy mobile:self-start mobile:text-u-12">
+                  {m.lines[0]}
+                </span>
+              )}
+              {m.lines.length > 1 && (
+                <CardDescription className="text-[13px] leading-relaxed font-semibold text-muted mobile:text-u-14">
+                  {m.lines.slice(1).join(" · ")}
                 </CardDescription>
-              ))}
+              )}
             </CardHeader>
           </CardRoot>
         </li>

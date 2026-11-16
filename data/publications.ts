@@ -1,7 +1,13 @@
 import type { Lang } from "@/i18n/config";
 
+export type PublicationKind = "journal" | "conference" | "thesis";
+
 export interface Publication {
-  text: string;
+  kind: PublicationKind;
+  authors: string;
+  title: string;
+  /** Venue/citation details shown after the title. */
+  venue: string;
   doi?: string;
 }
 
@@ -17,7 +23,12 @@ const tcc = {
 const coadvisor = { pt: " Coorientador: William Niemiec.", en: " Co-advisor: William Niemiec." };
 
 function thesis(lang: Lang, author: string, title: Record<Lang, string>, year: number, coadvised = true): Publication {
-  return { text: `${author}. ${title[lang]}. ${year}. ${tcc[lang]}${coadvised ? coadvisor[lang] : ""}` };
+  return {
+    kind: "thesis",
+    authors: author,
+    title: title[lang],
+    venue: `${year}. ${tcc[lang]}${coadvised ? coadvisor[lang] : ""}`,
+  };
 }
 
 export function publications(lang: Lang): PublicationYear[] {
@@ -34,7 +45,12 @@ export function publications(lang: Lang): PublicationYear[] {
           en: "An exploratory study of the use of Claude in the development and evaluation of a mobile mHealth interface",
         }, 2026),
         {
-          text: "NIEMIEC, WILLIAM ; TAVARES, A. R. ; COTA, E. . A Methodology for Generating Mobile Applications Through Large Language Models. In: IEEE/ACM 13th International Conference on Mobile Software Engineering and Systems (MOBILESoft), 2026, Rio de Janeiro. Proceedings. 2026.",
+          kind: "conference",
+          authors: "NIEMIEC, WILLIAM ; TAVARES, A. R. ; COTA, E.",
+          title:
+            "A Methodology for Generating Mobile Applications Through Large Language Models",
+          venue:
+            "In: IEEE/ACM 13th International Conference on Mobile Software Engineering and Systems (MOBILESoft), 2026, Rio de Janeiro. Proceedings. 2026.",
           doi: "10.1145/3795077.3795116",
         },
       ],
@@ -43,15 +59,30 @@ export function publications(lang: Lang): PublicationYear[] {
       year: "2025",
       items: [
         {
-          text: "NIEMIEC, WILLIAM ; COTA, ÉRIKA. Towards a component-based framework for mHealth apps: Bridging the gap between the nursing domain language and the computation domain. JOURNAL OF SYSTEMS AND SOFTWARE, v. 230, p. 112497, 2025.",
+          kind: "journal",
+          authors: "NIEMIEC, WILLIAM ; COTA, ÉRIKA",
+          title:
+            "Towards a component-based framework for mHealth apps: Bridging the gap between the nursing domain language and the computation domain",
+          venue:
+            "JOURNAL OF SYSTEMS AND SOFTWARE, v. 230, p. 112497, 2025.",
           doi: "10.1016/j.jss.2025.112497",
         },
         {
-          text: "NIEMIEC, WILLIAM ; TAVARES, A. R. ; COTA, E. . Leveraging Natural Language Processing for No-Code mHealth Development: A Component-Based Approach Using Nursing Taxonomies. In: IEEE International Symposium on Computer-Based Medical Systems (CBMS), 2025, Madri. Proceedings. Los Alamitos: IEEE Computer Society, 2025.",
+          kind: "conference",
+          authors: "NIEMIEC, WILLIAM ; TAVARES, A. R. ; COTA, E.",
+          title:
+            "Leveraging Natural Language Processing for No-Code mHealth Development: A Component-Based Approach Using Nursing Taxonomies",
+          venue:
+            "In: IEEE International Symposium on Computer-Based Medical Systems (CBMS), 2025, Madri. Proceedings. Los Alamitos: IEEE Computer Society, 2025.",
           doi: "10.1109/CBMS65348.2025.00084",
         },
         {
-          text: "PEIXOTO, M. E. V. O. ; NIEMIEC, WILLIAM ; GOZZI, J. V. ; TANAKA, A. K. S. R. ; COTA, E. . Avaliando a qualidade de aplicativos de saúde através da metodologia uMARS e do uso de personas. In: Simpósio Brasileiro de Computação Aplicada à Saúde (SBCAS), 2025, Porto Alegre. Anais. Porto Alegre: Sociedade Brasileira de Computação, 2025.",
+          kind: "conference",
+          authors: "PEIXOTO, M. E. V. O. ; NIEMIEC, WILLIAM ; GOZZI, J. V. ; TANAKA, A. K. S. R. ; COTA, E.",
+          title:
+            "Avaliando a qualidade de aplicativos de saúde através da metodologia uMARS e do uso de personas",
+          venue:
+            "In: Simpósio Brasileiro de Computação Aplicada à Saúde (SBCAS), 2025, Porto Alegre. Anais. Porto Alegre: Sociedade Brasileira de Computação, 2025.",
           doi: "10.5753/sbcas.2025.7206",
         },
         thesis(lang, "ZEBROWSKI, YASMIN KATERINE BEER", {
