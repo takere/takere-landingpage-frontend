@@ -9,7 +9,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: siteMetadata.metadataBase,
   title: `${getDictionary(defaultLocale).notFound.title} | Takere`,
-  robots: { index: false, follow: true },
+  // No `robots` here: Next.js already adds <meta name="robots" content="noindex"> to not-found pages.
 };
 
 /**

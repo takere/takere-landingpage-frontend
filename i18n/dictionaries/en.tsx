@@ -28,19 +28,6 @@ const en: Dictionary = {
   },
 
   seo: {
-    keywords: [
-      "Takere",
-      "mHealth",
-      "digital health",
-      "care plan",
-      "treatment adherence",
-      "remote patient monitoring",
-      "research group",
-      "UFRGS",
-      "Institute of Informatics",
-      "HCPA",
-      "Hospital de Clínicas de Porto Alegre",
-    ],
     ogAlt: "Takere: individualized care for your patient",
     organization:
       "Research group at the Institute of Informatics (UFRGS), in partnership with HCPA, developing an mHealth platform for personalizing care plans and keeping patients engaged in treatment.",
@@ -163,14 +150,22 @@ const en: Dictionary = {
   team: { title: "Takere Research Lab team", coordinators: "Coordinators", members: "Members", former: "Former members" },
 
   publications: {
-    title: "Publications",
+    title: "Takere Research Lab publications",
     count: { one: "publication", other: "publications" },
     kinds: { journal: "Journal article", conference: "Conference paper", thesis: "Undergraduate thesis" },
     links: { pdf: "PDF", supplementary: "Supplementary material" },
+    detail: {
+      back: "All publications",
+      authors: "Authors",
+      venue: "Published in",
+      year: "Year",
+      abstract: "Abstract",
+      description: "{kind} ({year}) by {authors}, published by the Takere research group (UFRGS/HCPA).",
+    },
   },
 
   gallery: {
-    title: "Gallery",
+    title: "Photo gallery",
     intro:
       "Workshops, presentations and meetings of the Takere research group with students, healthcare professionals and patients at UFRGS and HCPA.",
     photo: "Photo",

@@ -22,6 +22,10 @@ export interface Publication {
   authors: string[];
   venueType: PublicationKind;
   links: PublicationLinks;
+  /** Optional abstract, shown on the publication's page and used as its meta description. */
+  abstract?: string;
+  /** Optional full publication date (YYYY-MM-DD or YYYY-MM); `year` is used when absent. */
+  date?: string;
 }
 
 export interface PublicationYear {
@@ -30,6 +34,31 @@ export interface PublicationYear {
 }
 
 const data: Record<Lang, Publication[]> = { pt: pt as Publication[], en: en as Publication[] };
+
+/**
+ * URL slug of a publication's page (/publications/<slug>): its PDF file name, or the title when
+ * there's no PDF. Dots become dashes so static hosts don't read the last part as a file extension.
+ */
+export function publicationSlug(p: Publication): string {
+  const base = p.links.pdf?.split("/").pop()?.replace(/\.pdf$/i, "") ?? p.name;
+  return base
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+/** All publications of a language, in JSON order. Both JSON files list the same items in the same order. */
+export function allPublications(lang: Lang): Publication[] {
+  return data[lang];
+}
+
+/** A publication by slug, plus its Portuguese entry (which keeps each title in its original language). */
+export function findPublication(lang: Lang, slug: string): { item: Publication; original: Publication } | undefined {
+  const i = data[lang].findIndex((p) => publicationSlug(p) === slug);
+  return i < 0 ? undefined : { item: data[lang][i], original: data.pt[i] };
+}
 
 /** Publications grouped by year, newest first (order within a year follows the JSON). */
 export function publications(lang: Lang): PublicationYear[] {

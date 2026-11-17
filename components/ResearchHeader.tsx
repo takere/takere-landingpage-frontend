@@ -17,13 +17,15 @@ const items = [
 
 export default function ResearchHeader({ lang, t }: { lang: Lang; t: Dictionary["common"]["researchNav"] }) {
   const pathname = usePathname();
-  const selected = items.find(({ path }) => basePath(pathname) === path)?.key ?? "home";
+  const base = basePath(pathname);
+  // Sub-pages (e.g. /publications/<slug>) keep their section selected.
+  const selected = items.find(({ path }) => base === path || base.startsWith(`${path}/`))?.key ?? "home";
 
   return (
     <div className="flex flex-col items-center gap-3 border-b border-(--border) bg-background pt-5 pb-0 mobile:gap-0 mobile:border-b-0 mobile:pt-1 mobile:pb-3">
       <Link href={href(lang, "/research")} className="rounded-lg">
         <Image
-          src="/assets/images/brand/takere-research-lab.png"
+          src="/assets/images/brand/takere-research-lab.webp"
           alt="Takere Research Lab"
           width={2274}
           height={267}

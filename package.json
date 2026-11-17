@@ -7,7 +7,8 @@
     "build": "next build && node scripts/flatten-default-locale.mjs",
     "start": "node --env-file-if-exists=.env node_modules/next/dist/bin/next start",
     "preview": "serve out",
-    "lint": "eslint"
+    "lint": "eslint",
+    "optimize-images": "node scripts/optimize-images.mjs"
   },
   "dependencies": {
     "@heroui/react": "^3.2.7",

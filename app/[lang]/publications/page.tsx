@@ -1,11 +1,12 @@
 import { CardRoot } from "@heroui/react/card";
 import { ChipRoot } from "@heroui/react/chip";
+import Link from "next/link";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import ResearchLayout from "@/components/ResearchLayout";
 import { publications } from "@/data/publications";
-import { getDictionary, type Lang } from "@/i18n";
-import { breadcrumbJsonLd, pageMetadata, publicationsJsonLd } from "@/lib/metadata";
+import { getDictionary, href, type Lang } from "@/i18n";
+import { breadcrumbJsonLd, pageMetadata, publicationPath, publicationsJsonLd } from "@/lib/metadata";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/publications">) {
   return pageMetadata((await params).lang as Lang, "publications");
@@ -69,7 +70,9 @@ export default async function Page({ params }: PageProps<"/[lang]/publications">
                         {t.kinds[item.venueType]}
                       </ChipRoot>
                       <h3 className="font-display text-lg leading-snug font-bold text-ink mobile:text-u-16">
-                        {item.name}
+                        <Link href={href(lang, publicationPath(item))} className="hover:text-green focus-visible:text-green">
+                          {item.name}
+                        </Link>
                       </h3>
                       <p className="text-[13px] font-semibold tracking-wide text-navy/80 mobile:text-u-12">
                         {item.authors.join(" ; ")}

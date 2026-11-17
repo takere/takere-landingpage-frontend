@@ -204,7 +204,7 @@ Images go under [`public/assets/images/`](public/assets/images/) (`team/`, `gall
 Deployment is fully automated by [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). On every push to `main`:
 
 1. **Build** — installs dependencies, runs `yarn build` and the tests (if a `test` script exists)
-2. **Deploy** — publishes `out/` to GitHub Pages (custom domain set by [`CNAME`](CNAME))
+2. **Deploy** — publishes `out/` to GitHub Pages (the custom domain, `www.takere.com.br`, is set in the repository's Pages settings; [`public/CNAME`](public/CNAME) mirrors it)
 3. **Release** — if the build and tests succeed, bumps the patch version in `package.json`, pushes a `vX.Y.Z` tag and creates a GitHub Release with auto-generated notes
 
 > [!NOTE]

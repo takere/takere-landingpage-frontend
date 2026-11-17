@@ -27,19 +27,6 @@ const pt = {
   },
 
   seo: {
-    keywords: [
-      "Takere",
-      "mHealth",
-      "saúde digital",
-      "plano de cuidado",
-      "adesão ao tratamento",
-      "monitoramento remoto de pacientes",
-      "grupo de pesquisa",
-      "UFRGS",
-      "Instituto de Informática",
-      "HCPA",
-      "Hospital de Clínicas de Porto Alegre",
-    ],
     ogAlt: "Takere: cuidado individualizado ao seu paciente",
     organization:
       "Grupo de pesquisa do Instituto de Informática da UFRGS, em parceria com o HCPA, que desenvolve uma plataforma mHealth para personalização do plano de cuidado e engajamento de pacientes no tratamento.",
@@ -162,14 +149,23 @@ const pt = {
   team: { title: "Equipe do Takere Research Lab", coordinators: "Coordenadores", members: "Membros", former: "Membros anteriores" },
 
   publications: {
-    title: "Publicações",
+    title: "Publicações do Takere Research Lab",
     count: { one: "publicação", other: "publicações" },
     kinds: { journal: "Artigo em periódico", conference: "Artigo em conferência", thesis: "Trabalho de conclusão" },
     links: { pdf: "PDF", supplementary: "Material suplementar" },
+    detail: {
+      back: "Todas as publicações",
+      authors: "Autores",
+      venue: "Publicado em",
+      year: "Ano",
+      abstract: "Resumo",
+      /** Meta description of a publication page; {kind}, {year}, {authors} are replaced. */
+      description: "{kind} ({year}) de {authors}, publicado pelo grupo de pesquisa Takere (UFRGS/HCPA).",
+    },
   },
 
   gallery: {
-    title: "Galeria",
+    title: "Galeria de fotos",
     intro:
       "Registros de oficinas, apresentações e encontros do grupo de pesquisa Takere com estudantes, profissionais de saúde e pacientes da UFRGS e do HCPA.",
     photo: "Foto",

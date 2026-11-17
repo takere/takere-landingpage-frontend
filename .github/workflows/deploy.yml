@@ -20,6 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Full history: app/sitemap.ts reads each page's last commit date for <lastmod>.
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:

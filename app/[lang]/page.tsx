@@ -63,7 +63,7 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
           </div>
           <div className="relative min-h-80 mobile:-order-1 mobile:h-65 mobile:min-h-0">
             <Image
-              src="/assets/images/home/hero.jpg"
+              src="/assets/images/home/hero.webp"
               alt=""
               fill
               priority
@@ -89,7 +89,7 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
         <section className="container-site grid grid-cols-[420px_1fr] items-end gap-18 pb-20 max-[1000px]:grid-cols-2 max-[1000px]:gap-10 mobile:block mobile:max-w-80 mobile:px-4 mobile:pt-6 mobile:pb-12">
           <div data-reveal="left" className="mobile:hidden">
             <Image
-              src="/assets/images/home/computer.jpg"
+              src="/assets/images/home/computer.webp"
               alt={t.offerImgAlt}
               width={420}
               height={377}
@@ -106,7 +106,7 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
                   <CardRoot className="max-w-110 flex-row shadow-none items-center gap-4 p-3 mobile:max-w-none mobile:flex-col mobile:gap-2.5 mobile:p-4 mobile:text-center">
                     <span className="grid size-14 shrink-0 place-items-center rounded-full bg-green shadow-[0_4px_12px_-4px_rgba(12,177,123,0.6)]">
                       <Image
-                        src={`/assets/images/icons/${offer.icon}.png`}
+                        src={`/assets/images/icons/${offer.icon}.webp`}
                         alt=""
                         width={27}
                         height={27}
@@ -131,16 +131,16 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
             </SectionTitle>
             <ol className="-mt-12.5 mobile:mx-[calc(-20*var(--u))] mobile:mt-9">
               <Step n={1} text={t.steps[0]} textReveal="left">
-                <Monitor screen="/assets/images/home/screen-care-plan.png" alt={t.screenAlts[0]} />
+                <Monitor screen="/assets/images/home/screen-care-plan.webp" alt={t.screenAlts[0]} />
               </Step>
               <Step n={2} text={t.steps[1]} textReveal="right" reverse>
                 <div
                   className="relative w-51 justify-self-center [grid-area:media] mobile:mt-2.5 mobile:ml-20.5"
                   data-reveal="left"
                 >
-                  <Image src="/assets/images/home/phone.png" alt="" width={204} height={428} className="h-auto" />
+                  <Image src="/assets/images/home/phone.webp" alt="" width={204} height={428} className="h-auto" />
                   <Image
-                    src={`/assets/images/home/app-patient-${lang}.png`}
+                    src={`/assets/images/home/app-patient-${lang}.webp`}
                     alt={t.screenAlts[1]}
                     width={189}
                     height={390}
@@ -149,7 +149,7 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
                 </div>
               </Step>
               <Step n={3} text={t.steps[2]} textReveal="left" last>
-                <Monitor screen="/assets/images/home/screen-monitoring.png" alt={t.screenAlts[2]} last />
+                <Monitor screen="/assets/images/home/screen-monitoring.webp" alt={t.screenAlts[2]} last />
               </Step>
             </ol>
           </div>
@@ -307,7 +307,7 @@ function Monitor({ screen, alt, last }: { screen: string; alt: string; last?: bo
       )}
       data-reveal="right"
     >
-      <Image src="/assets/images/home/monitor.png" alt="" width={464} height={407} className="h-auto" />
+      <Image src="/assets/images/home/monitor.webp" alt="" width={464} height={407} className="h-auto" />
       <Image src={screen} alt={alt} width={436} height={229} className="absolute top-[6.2%] left-[3%] h-auto w-[94%]" />
     </div>
   );
