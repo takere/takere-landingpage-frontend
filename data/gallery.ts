@@ -89,7 +89,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     en: "Takere presentation at StartupRS by William Niemiec",
   }),
   photo("11-10-2022-apresentacao-primeiro-prototipo-takere.jpg", 521, 521, {
-    pt: "Apresentação do primeiro protótipo da Takere",
-    en: "Presentation of the first Takere prototype",
+    pt: "Apresentação do primeiro protótipo da Takere no TCC do aluno William Niemiec",
+    en: "Presentation of the first Takere prototype in student William Niemiec's undergraduate thesis",
   }),
 ];

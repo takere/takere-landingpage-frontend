@@ -79,15 +79,9 @@
 html {
   overflow-x: clip;
   scroll-behavior: smooth;
-  scroll-padding-top: var(--topbar-h);
 }
 
-/* No sticky bar to clear on pages where the top bar scrolls away or is hidden. */
-html:has(header[data-static]) {
-  scroll-padding-top: 0;
-}
-
-/* Hidden menu takes no room: sticky offsets (e.g. publications sidebar) and scroll padding collapse. */
+/* Hidden menu takes no room. */
 html[data-hide-menu] {
   --topbar-h: 0px;
 }

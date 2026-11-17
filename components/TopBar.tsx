@@ -48,16 +48,7 @@ export default function TopBar({ lang, t }: { lang: Lang; t: Dictionary["common"
   const pathname = usePathname();
   const base = basePath(pathname);
   const inResearch = researchPaths.includes(base);
-  const isStatic = base === "/policy";
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   // Close the menu after navigating.
   useEffect(() => setOpen(false), [pathname]);
@@ -97,14 +88,10 @@ export default function TopBar({ lang, t }: { lang: Lang; t: Dictionary["common"
   return (
     <header
       data-site-header
-      data-scrolled={scrolled}
-      // The privacy policy is long-form reading, so the bar scrolls away there instead of sticking.
-      data-static={isStatic || undefined}
+      // Not sticky anywhere: the bar scrolls away with the page.
       className={cn(
-        isStatic ? "relative" : "sticky top-0",
-        "z-50 h-[var(--topbar-h)] border-b border-transparent bg-background/80 backdrop-blur-xl backdrop-saturate-150 transition-[box-shadow,border-color,background-color] duration-300",
+        "relative z-50 h-[var(--topbar-h)] border-b border-transparent bg-background",
         "before:absolute before:inset-x-0 before:top-0 before:h-0.75 before:bg-linear-to-r before:from-green before:to-navy before:content-['']",
-        scrolled && !isStatic && "border-separator bg-background/90 shadow-[0_6px_24px_-12px_rgba(0,29,75,0.25)]",
       )}
     >
       <div className="container-site grid h-full grid-cols-[1fr_auto_1fr] items-center mobile:flex mobile:justify-end mobile:pr-2">

@@ -37,7 +37,7 @@ export default async function Page({ params }: PageProps<"/[lang]/publications">
               className="grid grid-cols-[160px_minmax(0,1fr)] gap-10 mobile:grid-cols-[minmax(0,1fr)] mobile:gap-5"
             >
               <header
-                className="self-start desktop:sticky desktop:top-[calc(var(--topbar-h)+24px)]"
+                className="self-start desktop:sticky desktop:top-6"
                 data-reveal="left"
               >
                 <h2
