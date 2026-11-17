@@ -13,7 +13,7 @@ export interface Coordinator {
 export const coordinators: Coordinator[] = [
   {
     name: { pt: "Érika F. Cota", en: "Erika F. Cota" },
-    photo: "/img/team/erika-cota.jpg",
+    photo: "/assets/images/team/erika-cota.jpg",
     degree: { pt: "Dra. em Computação", en: "PhD in Computer Science" },
     institution: "UFRGS",
     linkedin: "https://br.linkedin.com/in/erikacota",
@@ -22,7 +22,7 @@ export const coordinators: Coordinator[] = [
   },
   {
     name: { pt: "William Niemiec", en: "William Niemiec" },
-    photo: "/img/team/william-niemiec.jpg",
+    photo: "/assets/images/team/william-niemiec.jpg",
     degree: { pt: "Doutorando em Computação", en: "PhD student in Computer Science" },
     institution: "UFRGS",
     linkedin: "https://br.linkedin.com/in/williamniemiec",
@@ -31,7 +31,7 @@ export const coordinators: Coordinator[] = [
   },
   {
     name: { pt: "Douglas N. Matos", en: "Douglas N. Matos" },
-    photo: "/img/team/douglas-matos.png",
+    photo: "/assets/images/team/douglas-matos.png",
     degree: { pt: "Farmacêutico Clínico", en: "Clinical Pharmacist" },
     institution: "HCPA",
     linkedin: "https://www.linkedin.com/in/douglasnmatos",
@@ -112,7 +112,7 @@ const former: MemberData[] = [
 function localize(list: MemberData[], lang: Lang): Member[] {
   return list.map((m) => ({
     name: m.name,
-    photo: `/img/team/${m.photo}`,
+    photo: `/assets/images/team/${m.photo}`,
     lines: m.school ? [roles[m.role][lang], schools[m.school][lang], "UFRGS"] : [roles[m.role][lang]],
   }));
 }

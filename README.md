@@ -184,7 +184,7 @@ Structured content lives in [`data/`](data/). Edit these files to add members, p
 | `data/contact.ts` | Contact information |
 | `data/stats.ts` | Statistics shown on the site |
 
-Images go under [`public/img/`](public/img/) (`team/`, `gallery/`, `partners/`, `research/`, `home/`, `brand/`, `icons/`).
+Images go under [`public/assets/images/`](public/assets/images/) (`team/`, `gallery/`, `partners/`, `research/`, `home/`, `brand/`, `icons/`).
 
 > [!TIP]
 > Values that differ per language use the `Localized` type, e.g. `{ pt: "Equipe", en: "Team" }`.

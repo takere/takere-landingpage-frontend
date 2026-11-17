@@ -47,7 +47,7 @@ Enhancement suggestions are welcome! Please provide:
 
 ### Updating Content
 
-Most content changes (team members, publications, gallery photos, research lines) only require editing files in `data/` and adding images to `public/img/`. See [Content Guidelines](#content-guidelines).
+Most content changes (team members, publications, gallery photos, research lines) only require editing files in `data/` and adding images to `public/assets/images/`. See [Content Guidelines](#content-guidelines).
 
 ### Adding New Pages
 
@@ -132,7 +132,7 @@ takere-landing-page/
 ├── data/                # Structured content
 ├── i18n/                # Locale config and dictionaries
 ├── lib/                 # Metadata and helpers
-├── public/img/          # Images
+├── public/assets/images/ # Images
 └── scripts/             # Post-build scripts
 ```
 
@@ -141,7 +141,7 @@ takere-landing-page/
 - **Pages**: `app/[lang]/<route>/page.tsx`, containing the page metadata and JSX
 - **Components**: One component per file in `components/`, named in PascalCase
 - **Content**: One file per content type in `data/`
-- **Images**: Grouped by section under `public/img/` and resized before committing
+- **Images**: Grouped by section under `public/assets/images/` and resized before committing
 
 ### Styling
 
@@ -176,7 +176,7 @@ A new page also needs its SEO texts under `seo.pages` in the dictionaries and an
 When adding or updating content in `data/`:
 
 1. **Localize every text** - Use the `Localized` type (`{ pt: "...", en: "..." }`) for anything shown to visitors
-2. **Optimize images** - Resize and compress images before adding them to `public/img/`
+2. **Optimize images** - Resize and compress images before adding them to `public/assets/images/`
 3. **Consistent naming** - Use lowercase, hyphen-separated image file names
 4. **Alt texts** - Provide meaningful descriptions for images
 5. **Personal data** - Only publish information that the people involved agreed to share

@@ -1,12 +1,17 @@
 "use client";
 
-import { Button, Modal, Skeleton } from "@heroui/react";
+import { Button, Chip, Modal, Skeleton } from "@heroui/react";
+import { CalendarBlankIcon } from "@phosphor-icons/react";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 
 export interface Photo {
   src: string;
   alt: string;
+  /** ISO date (YYYY-MM-DD), for the <time> element. */
+  date: string;
+  /** Date formatted for the page's language, shown in a chip. */
+  dateLabel: string;
   width: number;
   height: number;
 }
@@ -17,6 +22,20 @@ interface Labels {
   prev: string;
   next: string;
 }
+
+/**
+ * Date pill in the Takere app's status-chip style (navy text and icon on a 12% navy tint). The tint is
+ * mixed with white rather than translucent so it reads the same over any photo.
+ */
+const DateChip = ({ date, label, className = "" }: { date: string; label: string; className?: string }) => (
+  <Chip
+    size="sm"
+    className={`justify-center gap-1 rounded-full bg-[color-mix(in_srgb,var(--color-navy)_12%,white)] px-2.5 py-1 text-[12px] leading-[normal] font-semibold whitespace-nowrap text-navy ${className}`}
+  >
+    <CalendarBlankIcon size={12} weight="bold" aria-hidden="true" />
+    <time dateTime={date}>{label}</time>
+  </Chip>
+);
 
 const Chevron = ({ dir }: { dir: "left" | "right" }) => (
   <svg viewBox="0 0 10 16" className="h-5 w-3" aria-hidden="true">
@@ -81,7 +100,7 @@ export default function Gallery({ rows, labels }: { rows: Photo[][]; labels: Lab
                     setCurrent(i);
                     setOpen(true);
                   }}
-                  aria-label={p.alt || `${labels.photo} ${i + 1}`}
+                  aria-label={`${p.alt || `${labels.photo} ${i + 1}`} (${p.dateLabel})`}
                 >
                   {!loaded.has(p.src) && <Skeleton className="absolute inset-0 rounded-none" />}
                   <Image
@@ -93,6 +112,9 @@ export default function Gallery({ rows, labels }: { rows: Photo[][]; labels: Lab
                     onLoad={() => markLoaded(p.src)}
                     className="relative size-full object-cover transition-transform duration-500 group-hover:scale-[1.03] mobile:h-auto"
                   />
+                  <span aria-hidden="true" className="pointer-events-none absolute top-3 left-3 mobile:top-2.5 mobile:left-2.5">
+                    <DateChip date={p.date} label={p.dateLabel} className="shadow-sm" />
+                  </span>
                   {p.alt && (
                     <span
                       aria-hidden="true"
@@ -114,6 +136,12 @@ export default function Gallery({ rows, labels }: { rows: Photo[][]; labels: Lab
             <Modal.Dialog
               aria-label={photo?.alt || `${labels.photo} ${current + 1}`}
               className="relative flex items-center justify-center bg-transparent px-18 py-12 shadow-none mobile:px-4"
+              // The full-size dialog covers the backdrop, so close on clicks that land on its empty
+              // area (or beside the photo inside the figure) instead of on the photo, caption or buttons.
+              onClick={(e) => {
+                const target = e.target as HTMLElement;
+                if (target === e.currentTarget || target.tagName === "FIGURE") setOpen(false);
+              }}
             >
               <Modal.CloseTrigger
                 aria-label={labels.close}
@@ -135,9 +163,10 @@ export default function Gallery({ rows, labels }: { rows: Photo[][]; labels: Lab
                       className="relative block max-h-[calc(100dvh-140px)] w-auto object-contain"
                     />
                   </div>
-                  {photo.alt && (
-                    <figcaption className="mt-3 text-center font-display text-white">{photo.alt}</figcaption>
-                  )}
+                  <figcaption className="mt-3 flex max-w-200 flex-col items-center gap-2 text-center font-display text-white">
+                    <DateChip date={photo.date} label={photo.dateLabel} />
+                    {photo.alt}
+                  </figcaption>
                 </figure>
               )}
               <Button isIconOnly aria-label={labels.prev} onPress={() => step(-1)} className={`${navClass} left-3`}>

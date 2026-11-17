@@ -149,7 +149,7 @@ export default function TopBar({ lang, t }: { lang: Lang; t: Dictionary["common"
             >
               <div className="flex items-center justify-between px-4 py-4">
                 <NextLink href={href(lang, "/")} className="w-full max-w-40 rounded-md">
-                  <Image src="/img/brand/logo-white.png" alt="Takere" width={1444} height={404} sizes="160px" className="w-full" />
+                  <Image src="/assets/images/brand/logo-white.png" alt="Takere" width={1444} height={404} sizes="160px" className="w-full" />
                 </NextLink>
                 <Button
                   isIconOnly

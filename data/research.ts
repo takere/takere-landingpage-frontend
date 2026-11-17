@@ -1,7 +1,7 @@
 import type { Localized } from "@/i18n/config";
 
 export interface ResearchArea {
-  /** Image file name in /img/research (without extension). */
+  /** Image file name in /assets/images/research (without extension). */
   key: string;
   label: Localized;
 }

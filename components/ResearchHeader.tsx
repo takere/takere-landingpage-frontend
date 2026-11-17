@@ -23,7 +23,7 @@ export default function ResearchHeader({ lang, t }: { lang: Lang; t: Dictionary[
     <div className="flex flex-col items-center gap-3 border-b border-(--border) bg-background pt-5 pb-0 mobile:gap-0 mobile:border-b-0 mobile:pt-1 mobile:pb-3">
       <Link href={href(lang, "/research")} className="rounded-lg">
         <Image
-          src="/img/brand/takere-research-lab.png"
+          src="/assets/images/brand/takere-research-lab.png"
           alt="Takere Research Lab"
           width={2274}
           height={267}

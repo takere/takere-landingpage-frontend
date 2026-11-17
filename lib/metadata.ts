@@ -7,8 +7,8 @@ export const SITE_URL = "https://www.takere.com.br";
 export const SITE_NAME = "Takere";
 const ORG_ID = `${SITE_URL}/#organization`;
 
-/** Open Graph / Twitter card image (public/img/brand/social-media.jpg), shared by both languages. */
-const OG_IMAGE = { url: "/img/brand/social-media.jpg", width: 836, height: 414, type: "image/jpeg" };
+/** Open Graph / Twitter card image (public/assets/images/brand/social-media.jpg), shared by both languages. */
+const OG_IMAGE = { url: "/assets/images/brand/social-media.jpg", width: 836, height: 414, type: "image/jpeg" };
 
 export type PageKey = keyof Dictionary["seo"]["pages"];
 
@@ -71,7 +71,7 @@ export function organizationJsonLd(lang: Lang) {
         name: SITE_NAME,
         alternateName: "Takere Research Lab",
         url: SITE_URL,
-        logo: `${SITE_URL}/img/brand/icon.png`,
+        logo: `${SITE_URL}/assets/images/brand/icon.png`,
         email: CONTACT_EMAIL,
         description: getDictionary(lang).seo.organization,
         address: {

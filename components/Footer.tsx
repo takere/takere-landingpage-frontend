@@ -11,7 +11,7 @@ export default function Footer({ lang }: { lang: Lang }) {
     <footer id="contato" data-site-footer className="bg-navy text-white">
       <div className="container-site grid grid-cols-2 items-center gap-10 pt-16 pb-10 mobile:grid-cols-1 mobile:justify-items-center mobile:gap-4 mobile:py-8 mobile:text-center">
         <Image
-          src="/img/brand/logo-white.png"
+          src="/assets/images/brand/logo-white.png"
           alt={t.logoAlt}
           width={264}
           height={89}

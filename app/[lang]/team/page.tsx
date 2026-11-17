@@ -108,7 +108,7 @@ function ProfileLink({ url, icon, label }: { url: string; icon: string; label: s
         className="rounded-full p-1 transition-transform duration-200 hover:scale-110 hover:bg-default mobile:p-0.5"
       >
         <Image
-          src={`/img/icons/${icon}.png`}
+          src={`/assets/images/icons/${icon}.png`}
           alt=""
           width={36}
           height={36}

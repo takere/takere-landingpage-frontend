@@ -27,7 +27,7 @@ export default async function Page({ params }: PageProps<"/[lang]/research">) {
         <main id="main">
           <section className="relative overflow-hidden bg-navy px-5 py-22 mobile:bg-background mobile:p-0">
             <Image
-              src="/img/research/hero-bg.jpg"
+              src="/assets/images/research/hero-bg.jpg"
               alt=""
               fill
               priority
@@ -48,7 +48,7 @@ export default async function Page({ params }: PageProps<"/[lang]/research">) {
             >
               <div className="relative min-h-65 min-[761px]:max-[860px]:min-h-[56vw] mobile:order-2 mobile:h-51.5 mobile:min-h-0">
                 <Image
-                  src="/img/research/group.jpeg"
+                  src="/assets/images/research/group.jpeg"
                   alt={t.groupAlt}
                   fill
                   sizes="(max-width: 760px) 100vw, 540px"
@@ -94,7 +94,7 @@ export default async function Page({ params }: PageProps<"/[lang]/research">) {
                 <li key={area.key} data-reveal="up" className="first:col-span-2 first:row-span-2">
                   <div className="group relative isolate size-full overflow-hidden rounded-3xl bg-navy shadow-sm ring-1 ring-black/5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_-14px_rgba(0,29,75,0.55)] mobile:rounded-2xl">
                     <Image
-                      src={`/img/research/${area.key}.jpg`}
+                      src={`/assets/images/research/${area.key}.jpg`}
                       alt=""
                       fill
                       sizes={i === 0 ? "(max-width: 760px) 100vw, 520px" : "(max-width: 760px) 50vw, 260px"}

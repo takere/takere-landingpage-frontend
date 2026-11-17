@@ -14,7 +14,17 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/gallery">)
 export default async function Page({ params }: PageProps<"/[lang]/gallery">) {
   const lang = (await params).lang as Lang;
   const t = getDictionary(lang).gallery;
-  const rows = galleryRows.map((row) => row.map((photo) => ({ ...photo, alt: photo.alt[lang] })));
+  const dateFormat = new Intl.DateTimeFormat(lang === "pt" ? "pt-BR" : "en-US", {
+    dateStyle: lang === "pt" ? "short" : "medium",
+    timeZone: "UTC",
+  });
+  const rows = galleryRows.map((row) =>
+    row.map((photo) => ({
+      ...photo,
+      alt: photo.alt[lang],
+      dateLabel: dateFormat.format(new Date(`${photo.date}T00:00:00Z`)),
+    })),
+  );
 
   return (
     <>

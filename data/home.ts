@@ -1,6 +1,6 @@
 import type { Localized } from "@/i18n/config";
 
-/** "What do we offer?" list on the home page; `icon` is a file in /img/icons. */
+/** "What do we offer?" list on the home page; `icon` is a file in /assets/images/icons. */
 export const offers: { icon: string; label: Localized }[] = [
   { icon: "support", label: { pt: "Ferramenta para apoio ao tratamento", en: "Tool to support treatment" } },
   {
