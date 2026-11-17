@@ -1,0 +1,212 @@
+[
+  {
+    "name": "Use of LLMs for Simplifying Technical Language in mHealth Platforms",
+    "year": "2026",
+    "publisher": "2026. Course Conclusion Paper. (Computer Science Graduation) - Federal University of Rio Grande do Sul. Advisor: Érika Fernandes Cota. Co-advisor: William Niemiec.",
+    "authors": [
+      "KROEFF, LUCCA FRANKE"
+    ],
+    "venueType": "thesis",
+    "links": {
+      "pdf": "/assets/files/research/publications/tcc-2026-kroeff.pdf",
+      "supplementary": "https://doi.org/10.5281/zenodo.24296723"
+    }
+  },
+  {
+    "name": "An exploratory study of the use of Claude in the development and evaluation of an mHealth interface",
+    "year": "2026",
+    "publisher": "2026. Course Conclusion Paper. (Computer Science Graduation) - Federal University of Rio Grande do Sul. Advisor: Érika Fernandes Cota. Co-advisor: William Niemiec.",
+    "authors": [
+      "BRAGA, SOFIA DE MORAES SAUTER"
+    ],
+    "venueType": "thesis",
+    "links": {
+      "pdf": "/assets/files/research/publications/tcc-2026-braga.pdf",
+      "supplementary": "https://doi.org/10.5281/zenodo.24296499"
+    }
+  },
+  {
+    "name": "A Methodology for Generating Mobile Applications Through Large Language Models",
+    "year": "2026",
+    "publisher": "In: IEEE/ACM 13th International Conference on Mobile Software Engineering and Systems (MOBILESoft), 2026, Rio de Janeiro. Proceedings. 2026.",
+    "authors": [
+      "NIEMIEC, WILLIAM",
+      "TAVARES, A. R.",
+      "COTA, E."
+    ],
+    "venueType": "conference",
+    "links": {
+      "pdf": "/assets/files/research/publications/10.1145-3795077.3795116.pdf",
+      "doi": "https://doi.org/10.1145/3795077.3795116",
+      "supplementary": "https://doi.org/10.5281/zenodo.17353920"
+    }
+  },
+  {
+    "name": "Using LLMs to generate mHealth applications",
+    "year": "2026",
+    "publisher": "In: Escola Regional de Aprendizado de Máquina e Inteligência Artificial da Região Sul (ERAMIA-RS), 2026, Porto Alegre. Anais. Porto Alegre: Sociedade Brasileira de Computação, 2026. p. 25-28.",
+    "authors": [
+      "NIEMIEC, WILLIAM",
+      "TAVARES, A. R.",
+      "COTA, E."
+    ],
+    "venueType": "conference",
+    "links": {
+      "pdf": "/assets/files/research/publications/10.5753-eramiars.2026.35112.pdf",
+      "doi": "https://doi.org/10.5753/eramiars.2026.35112",
+      "supplementary": "https://doi.org/10.5281/zenodo.22088681"
+    }
+  },
+  {
+    "name": "Medical Prescription Data Extraction Using OCR and LLM for Import into the Takere Platform",
+    "year": "2026",
+    "publisher": "In: Escola Regional de Aprendizado de Máquina e Inteligência Artificial da Região Sul (ERAMIA-RS), 2026, Porto Alegre. Anais. Porto Alegre: Sociedade Brasileira de Computação, 2026. p. 460-463.",
+    "authors": [
+      "MIRANDA, C.",
+      "JACINTO, P.",
+      "NIEMIEC, WILLIAM",
+      "COTA, E."
+    ],
+    "venueType": "conference",
+    "links": {
+      "pdf": "/assets/files/research/publications/10.5753-eramiars.2026.35757.pdf",
+      "doi": "https://doi.org/10.5753/eramiars.2026.35757",
+      "supplementary": "https://doi.org/10.5281/zenodo.22314162"
+    }
+  },
+  {
+    "name": "Towards a component-based framework for mHealth apps: Bridging the gap between the nursing domain language and the computation domain",
+    "year": "2025",
+    "publisher": "JOURNAL OF SYSTEMS AND SOFTWARE, v. 230, p. 112497, 2025.",
+    "authors": [
+      "NIEMIEC, WILLIAM",
+      "COTA, ÉRIKA"
+    ],
+    "venueType": "journal",
+    "links": {
+      "pdf": "/assets/files/research/publications/10.1016-j.jss.2025.112497.pdf",
+      "doi": "https://doi.org/10.1016/j.jss.2025.112497"
+    }
+  },
+  {
+    "name": "Leveraging Natural Language Processing for mHealth Development: A Component-Based Approach Using Nursing Taxonomies",
+    "year": "2025",
+    "publisher": "In: IEEE International Symposium on Computer-Based Medical Systems (CBMS), 2025, Madri. Proceedings. Los Alamitos: IEEE Computer Society, 2025.",
+    "authors": [
+      "NIEMIEC, WILLIAM",
+      "TAVARES, A. R.",
+      "COTA, E."
+    ],
+    "venueType": "conference",
+    "links": {
+      "pdf": "/assets/files/research/publications/10.1109-CBMS65348.2025.00084.pdf",
+      "doi": "https://doi.org/10.1109/CBMS65348.2025.00084",
+      "supplementary": "https://doi.org/10.5281/zenodo.20403738"
+    }
+  },
+  {
+    "name": "Avaliando a qualidade de aplicativos de saúde através da metodologia uMARS e do uso de personas",
+    "year": "2025",
+    "publisher": "In: Simpósio Brasileiro de Computação Aplicada à Saúde (SBCAS), 2025, Porto Alegre. Anais. Porto Alegre: Sociedade Brasileira de Computação, 2025.",
+    "authors": [
+      "PEIXOTO, M. E. V. O.",
+      "NIEMIEC, WILLIAM",
+      "GOZZI, J. V.",
+      "TANAKA, A. K. S. R.",
+      "COTA, E."
+    ],
+    "venueType": "conference",
+    "links": {
+      "pdf": "/assets/files/research/publications/10.5753-sbcas.2025.7206.pdf",
+      "doi": "https://doi.org/10.5753/sbcas.2025.7206",
+      "supplementary": "https://doi.org/10.5281/zenodo.24296960"
+    }
+  },
+  {
+    "name": "Gamification Mechanisms as Motivational Factors for Adherence to Medical Treatments",
+    "year": "2025",
+    "publisher": "2025. Course Conclusion Paper. (Computer Science Graduation) - Federal University of Rio Grande do Sul. Advisor: Érika Fernandes Cota. Co-advisor: William Niemiec.",
+    "authors": [
+      "ZEBROWSKI, YASMIN KATERINE BEER"
+    ],
+    "venueType": "thesis",
+    "links": {
+      "pdf": "/assets/files/research/publications/tcc-2025-zebrowski.pdf"
+    }
+  },
+  {
+    "name": "Evaluation of the use of AI agents in the validation activity of healthcare care plans",
+    "year": "2025",
+    "publisher": "2025. Course Conclusion Paper. (Computer Science Graduation) - Federal University of Rio Grande do Sul. Advisor: Érika Fernandes Cota. Co-advisor: William Niemiec.",
+    "authors": [
+      "BATISTA, MARLIZE RAMOS"
+    ],
+    "venueType": "thesis",
+    "links": {
+      "pdf": "/assets/files/research/publications/tcc-2025-batista.pdf",
+      "supplementary": "https://doi.org/10.5281/zenodo.24296828"
+    }
+  },
+  {
+    "name": "Use of Large Language Models to facilitate the creation of care plans on the Takere platform",
+    "year": "2025",
+    "publisher": "2025. Course Conclusion Paper. (Computer Science Graduation) - Federal University of Rio Grande do Sul. Advisor: Érika Fernandes Cota. Co-advisor: William Niemiec.",
+    "authors": [
+      "FEITEIRA, LEONARDO VIANNA"
+    ],
+    "venueType": "thesis",
+    "links": {
+      "pdf": "/assets/files/research/publications/tcc-2025-feiteira.pdf",
+      "supplementary": "https://doi.org/10.5281/zenodo.24296511"
+    }
+  },
+  {
+    "name": "Integration of Voice Assistants and Wearable Devices in Personalized Care Plans: An mHealth Approach to Support Patient Adherence",
+    "year": "2025",
+    "publisher": "2025. Course Conclusion Paper. (Computer Science Graduation) - Federal University of Rio Grande do Sul. Advisor: Érika Fernandes Cota. Co-advisor: William Niemiec.",
+    "authors": [
+      "RAMOS, RICHARD LEAL"
+    ],
+    "venueType": "thesis",
+    "links": {
+      "pdf": "/assets/files/research/publications/tcc-2025-ramos.pdf"
+    }
+  },
+  {
+    "name": "Evolution of the Takere platform aiming for closer alignment with the language of a healthcare team",
+    "year": "2023",
+    "publisher": "2023. Course Conclusion Paper. (Computer Science Graduation) - Federal University of Rio Grande do Sul. Advisor: Érika Fernandes Cota. Co-advisor: William Niemiec.",
+    "authors": [
+      "SILVEIRA, RENATO ARAUJO"
+    ],
+    "venueType": "thesis",
+    "links": {
+      "pdf": "/assets/files/research/publications/tcc-2023-silveira.pdf",
+      "supplementary": "https://doi.org/10.5281/zenodo.24296899"
+    }
+  },
+  {
+    "name": "Use of BPMN for defining health care plans on the Takere platform",
+    "year": "2023",
+    "publisher": "2023. Course Conclusion Paper. (Computer Science Graduation) - Federal University of Rio Grande do Sul. Advisor: Érika Fernandes Cota.",
+    "authors": [
+      "BORGES, RAFAEL FERNANDES"
+    ],
+    "venueType": "thesis",
+    "links": {
+      "pdf": "/assets/files/research/publications/tcc-2023-borges.pdf"
+    }
+  },
+  {
+    "name": "Takere: a no-code platform for the development of mHealth applications based on care plans",
+    "year": "2022",
+    "publisher": "2022. Course Conclusion Paper. (Computer Science Graduation) - Federal University of Rio Grande do Sul. Advisor: Érika Fernandes Cota.",
+    "authors": [
+      "NIEMIEC, WILLIAM"
+    ],
+    "venueType": "thesis",
+    "links": {
+      "pdf": "/assets/files/research/publications/tcc-2022-niemiec.pdf"
+    }
+  }
+]

@@ -165,6 +165,7 @@ const pt = {
     title: "Publicações",
     count: { one: "publicação", other: "publicações" },
     kinds: { journal: "Artigo em periódico", conference: "Artigo em conferência", thesis: "Trabalho de conclusão" },
+    links: { pdf: "PDF", supplementary: "Material suplementar" },
   },
 
   gallery: {

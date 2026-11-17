@@ -55,11 +55,11 @@ export default async function Page({ params }: PageProps<"/[lang]/research">) {
                   className="object-cover"
                 />
               </div>
-              <CardContent className="flex flex-col px-8 pt-7 pb-8 mobile:px-3.25 mobile:pt-7.5 mobile:pb-4">
+              <CardContent className="@container flex flex-col px-8 pt-7 pb-8 mobile:px-3.25 mobile:pt-7.5 mobile:pb-4">
                 <SectionTitle
                   edge="none"
                   as="h1"
-                  className="mb-4.5 self-start text-[40px] mobile:mb-5.5 mobile:text-u-22 mobile:after:right-0 mobile:after:left-auto mobile:after:w-screen"
+                  className="mb-4.5 self-start text-[min(34px,7.8cqw)] whitespace-nowrap mobile:mb-5.5 mobile:text-u-22 mobile:after:right-0 mobile:after:left-auto mobile:after:w-screen"
                 >
                   {t.groupTitle}
                   <span className="sr-only">{t.groupTitleContext}</span>

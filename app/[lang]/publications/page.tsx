@@ -11,6 +11,9 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/publicatio
   return pageMetadata((await params).lang as Lang, "publications");
 }
 
+const linkClass =
+  "inline-flex max-w-full items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-green focus-visible:ring-offset-2 focus-visible:outline-none mobile:text-u-12";
+
 const ArrowIcon = () => (
   <svg viewBox="0 0 16 16" className="size-3.5" aria-hidden="true">
     <path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
@@ -51,7 +54,7 @@ export default async function Page({ params }: PageProps<"/[lang]/publications">
 
               <ol className="relative flex flex-col gap-5 border-l-2 border-green-light pl-8 mobile:gap-4 mobile:pl-5">
                 {group.items.map((item) => (
-                  <li key={item.title} className="relative" data-reveal="up">
+                  <li key={item.name} className="relative" data-reveal="up">
                     <span
                       aria-hidden="true"
                       className="absolute top-7 -left-[41px] size-4 rounded-full border-[3px] border-background bg-green ring-2 ring-green-light mobile:top-5 mobile:-left-[calc(var(--u)*27)] mobile:size-3"
@@ -63,26 +66,52 @@ export default async function Page({ params }: PageProps<"/[lang]/publications">
                         color="success"
                         className="self-start font-display font-semibold tracking-wide uppercase"
                       >
-                        {t.kinds[item.kind]}
+                        {t.kinds[item.venueType]}
                       </ChipRoot>
                       <h3 className="font-display text-lg leading-snug font-bold text-ink mobile:text-u-16">
-                        {item.title}
+                        {item.name}
                       </h3>
                       <p className="text-[13px] font-semibold tracking-wide text-navy/80 mobile:text-u-12">
-                        {item.authors}
+                        {item.authors.join(" ; ")}
                       </p>
-                      <p className="text-sm leading-relaxed text-muted mobile:text-u-13">{item.venue}</p>
-                      {item.doi && (
-                        <a
-                          href={`https://doi.org/${item.doi}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="mt-1 inline-flex max-w-full items-center gap-1.5 self-start rounded-full bg-navy px-3.5 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-green focus-visible:ring-2 focus-visible:ring-green focus-visible:ring-offset-2 focus-visible:outline-none mobile:text-u-12"
-                        >
-                          <span className="opacity-70">DOI</span>
-                          <span className="break-all">{item.doi}</span>
-                          <ArrowIcon />
-                        </a>
+                      <p className="text-sm leading-relaxed text-muted mobile:text-u-13">{item.publisher}</p>
+                      {(item.links.doi || item.links.pdf || item.links.supplementary) && (
+                        <div className="mt-1 flex flex-wrap gap-2">
+                          {item.links.doi && (
+                            <a
+                              href={item.links.doi}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={`${linkClass} bg-navy text-white hover:bg-green`}
+                            >
+                              <span className="opacity-70">DOI</span>
+                              <span className="break-all">{item.links.doi.replace(/^https?:\/\/(dx\.)?doi\.org\//, "")}</span>
+                              <ArrowIcon />
+                            </a>
+                          )}
+                          {item.links.pdf && (
+                            <a
+                              href={item.links.pdf}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={`${linkClass} border border-navy/20 text-navy hover:border-green hover:bg-green hover:text-white`}
+                            >
+                              {t.links.pdf}
+                              <ArrowIcon />
+                            </a>
+                          )}
+                          {item.links.supplementary && (
+                            <a
+                              href={item.links.supplementary}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={`${linkClass} border border-navy/20 text-navy hover:border-green hover:bg-green hover:text-white`}
+                            >
+                              {t.links.supplementary}
+                              <ArrowIcon />
+                            </a>
+                          )}
+                        </div>
                       )}
                     </CardRoot>
                   </li>
@@ -94,7 +123,7 @@ export default async function Page({ params }: PageProps<"/[lang]/publications">
       </ResearchLayout>
       <Footer lang={lang} />
       <JsonLd data={breadcrumbJsonLd(lang, "publications")} />
-      <JsonLd data={publicationsJsonLd(lang, years.flatMap((g) => g.items.map((p) => ({ ...p, year: g.year }))))} />
+      <JsonLd data={publicationsJsonLd(lang, years.flatMap((g) => g.items))} />
     </>
   );
 }

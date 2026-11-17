@@ -166,6 +166,7 @@ const en: Dictionary = {
     title: "Publications",
     count: { one: "publication", other: "publications" },
     kinds: { journal: "Journal article", conference: "Conference paper", thesis: "Undergraduate thesis" },
+    links: { pdf: "PDF", supplementary: "Supplementary material" },
   },
 
   gallery: {

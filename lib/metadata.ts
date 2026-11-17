@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { CONTACT_EMAIL } from "@/data/contact";
+import type { Publication } from "@/data/publications";
 import { defaultLocale, getDictionary, href, type Dictionary, type Lang } from "@/i18n";
 
 export const SITE_URL = "https://www.takere.com.br";
@@ -150,25 +151,8 @@ export function peopleJsonLd(people: PersonInput[]) {
   };
 }
 
-interface PublicationInput {
-  kind: "journal" | "conference" | "thesis";
-  year: string;
-  authors: string;
-  title: string;
-  venue: string;
-  doi?: string;
-}
-
-/** "NIEMIEC, WILLIAM ; TAVARES, A. R." -> Person list (names kept as written in the citation). */
-const citationAuthors = (authors: string) =>
-  authors
-    .split(";")
-    .map((a) => a.trim())
-    .filter(Boolean)
-    .map((name) => ({ "@type": "Person", name }));
-
 /** Schema.org ItemList of the group's publications (ScholarlyArticle / Thesis). */
-export function publicationsJsonLd(lang: Lang, items: PublicationInput[]) {
+export function publicationsJsonLd(lang: Lang, items: Publication[]) {
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -176,14 +160,15 @@ export function publicationsJsonLd(lang: Lang, items: PublicationInput[]) {
       "@type": "ListItem",
       position: i + 1,
       item: {
-        "@type": p.kind === "thesis" ? "Thesis" : "ScholarlyArticle",
-        headline: p.title,
-        name: p.title,
-        author: citationAuthors(p.authors),
+        "@type": p.venueType === "thesis" ? "Thesis" : "ScholarlyArticle",
+        headline: p.name,
+        name: p.name,
+        author: p.authors.map((name) => ({ "@type": "Person", name })),
         datePublished: p.year,
         inLanguage: lang === "pt" ? "pt-BR" : "en",
-        description: p.venue,
-        ...(p.doi && { url: `https://doi.org/${p.doi}`, sameAs: `https://doi.org/${p.doi}` }),
+        description: p.publisher,
+        ...(p.links.doi && { url: p.links.doi, sameAs: p.links.doi }),
+        ...(p.links.pdf && { encoding: { "@type": "MediaObject", encodingFormat: "application/pdf", contentUrl: p.links.pdf.startsWith("/") ? absoluteUrl(p.links.pdf) : p.links.pdf } }),
         sourceOrganization: { "@id": ORG_ID },
       },
     })),
