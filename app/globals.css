@@ -4,6 +4,19 @@
 /* ≤760px is the mobile layout; everything above it is desktop. */
 @custom-variant mobile (@media (max-width: 760px));
 @custom-variant desktop (@media (min-width: 761px));
+/* Devices with a real hover (mouse/trackpad); touch screens keep hover-only details visible. */
+@custom-variant can-hover (@media (hover: hover) and (pointer: fine));
+
+@theme {
+  --animate-fade-zoom: fade-zoom 0.35s ease-out;
+
+  @keyframes fade-zoom {
+    from {
+      opacity: 0;
+      transform: scale(0.98);
+    }
+  }
+}
 
 @theme inline {
   --color-green: #0cb17b;

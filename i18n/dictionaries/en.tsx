@@ -174,7 +174,8 @@ const en: Dictionary = {
     intro:
       "Workshops, presentations and meetings of the Takere research group with students, healthcare professionals and patients at UFRGS and HCPA.",
     photo: "Photo",
-    labels: { close: "Close", prev: "Previous", next: "Next" },
+    count: { one: "photo", other: "photos" },
+    labels: { close: "Close", prev: "Previous", next: "Next", thumbnails: "Thumbnails" },
   },
 
   notFound: {

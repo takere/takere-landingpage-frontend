@@ -173,7 +173,8 @@ const pt = {
     intro:
       "Registros de oficinas, apresentações e encontros do grupo de pesquisa Takere com estudantes, profissionais de saúde e pacientes da UFRGS e do HCPA.",
     photo: "Foto",
-    labels: { close: "Fechar", prev: "Anterior", next: "Próxima" },
+    count: { one: "foto", other: "fotos" },
+    labels: { close: "Fechar", prev: "Anterior", next: "Próxima", thumbnails: "Miniaturas" },
   },
 
   notFound: {
