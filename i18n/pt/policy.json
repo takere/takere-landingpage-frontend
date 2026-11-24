@@ -1,0 +1,54 @@
+{
+  "title": "Política de Privacidade",
+  "operated": "Este produto é mantido e operado por",
+  "intro": "Nós coletamos e utilizamos alguns dados pessoais que pertencem àqueles que utilizam nosso site, nossa plataforma para enfermeiros (HCP) e o nosso aplicativo para pacientes. Ao fazê-lo, agimos na qualidade de controlador desses dados e estamos sujeitos às disposições da Lei Federal n. 13.709/2018 (Lei Geral de Proteção de Dados Pessoais - LGPD).",
+  "care": "Nós cuidamos da proteção de seus dados pessoais e, por isso, disponibilizamos esta política de privacidade, que contém informações importantes sobre:",
+  "topics": [
+    "Quem deve utilizar nosso produto",
+    "Quais dados coletamos e o que fazemos com eles;",
+    "Seus direitos em relação aos seus dados pessoais; e",
+    "Como entrar em contato conosco."
+  ],
+  "s1": "1. Quem deve utilizar nosso produto",
+  "s1Text": "Nosso site só deve ser utilizado por pessoas com mais de dezoito anos de idade. Sendo assim, crianças e adolescentes não devem utilizá-lo.",
+  "s2": "2. Dados que coletamos e motivos da coleta",
+  "s2Text": "Nosso produto coleta e utiliza alguns dados pessoais de nossos usuários, de acordo com o disposto nesta seção.",
+  "s21": "2.1. Dados pessoais fornecidos expressamente pelo usuário",
+  "s21Text": "Nós coletamos os seguintes dados pessoais que nossos usuários nos fornecem expressamente ao utilizar nosso produto:",
+  "data": [
+    "Nome completo;",
+    "Celular",
+    "Foto",
+    "Nome da instituição",
+    "Email",
+    "Data de nascimento",
+    "CPF",
+    "Escolaridade",
+    "Religião",
+    "Endereço",
+    "Histórico de doenças e medicamentos",
+    "Alergias",
+    "Peso",
+    "Altura",
+    "Dieta."
+  ],
+  "when": "A coleta destes dados ocorre nos seguintes momentos:",
+  "moments": [
+    "Quando o usuário se registra ou é cadastrado na plataforma;",
+    "Quando o usuário entra em contato pelo site;",
+    "Quando o usuário realiza autenticação no sistema."
+  ],
+  "why": "Os dados fornecidos por nossos usuários são coletados com as seguintes finalidades:",
+  "purposes": [
+    "Para que o usuário possa se autenticar na plataforma;",
+    "Criação de planos de cuidado de forma precisa;",
+    "Para entender melhor o perfil dos nossos usuários a fim de oferecer uma melhor experiência."
+  ],
+  "s23": "2.3. Dados sensíveis",
+  "s23Text": "Não serão coletados dados sensíveis de nossos usuários, assim entendidos aqueles definidos nos arts. 11 e seguintes da Lei de Proteção de Dados Pessoais. Assim, não haverá coleta de dados sobre origem racial ou étnica, convicção religiosa, opinião política, filiação a sindicato ou a organização de caráter religioso, filosófico ou político, dado referente à saúde ou à vida sexual, dado genético ou biométrico, quando vinculado a uma pessoa natural.",
+  "s24": "2.4. Coleta de dados não previstos expressamente",
+  "s24Text": [
+    "Eventualmente, outros tipos de dados não previstos expressamente nesta Política de Privacidade poderão ser coletados, desde que sejam fornecidos com o consentimento do usuário, ou, ainda, que a coleta seja permitida com fundamento em outra base legal prevista em lei.",
+    "Em qualquer caso, a coleta de dados e as atividades de tratamento dela decorrentes serão informadas aos usuários."
+  ]
+}

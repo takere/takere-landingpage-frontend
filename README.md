@@ -70,7 +70,10 @@ takere-landing-page/
 │   └── robots.ts
 ├── components/                  # Top bar, footer, gallery, partners, stats...
 ├── data/                        # Structured content (team, publications, gallery...)
-├── i18n/                        # Locale config, route helpers and dictionaries
+├── i18n/                        # Locale config, route helpers and interface texts
+│   ├── pt/ en/                  # One JSON file per namespace (home.json, seo.json...)
+│   ├── rich.tsx                 # Renders tags (<b>, <br/>, links) inside messages
+│   └── index.ts                 # getDictionary() and the Dictionary type
 ├── lib/                         # Metadata and helpers
 ├── public/                      # Static assets (images, CNAME, .nojekyll)
 ├── scripts/                     # Post-build scripts
@@ -154,8 +157,9 @@ yarn preview
 ## 🌐 Internationalization
 
 - Supported languages are declared in `locales` in [`i18n/config.ts`](i18n/config.ts). Portuguese (`pt`) is the default locale and has **no URL prefix**.
-- All interface texts live in the dictionaries [`i18n/dictionaries/pt.tsx`](i18n/dictionaries/pt.tsx) and [`i18n/dictionaries/en.tsx`](i18n/dictionaries/en.tsx). Pages contain no hardcoded text.
-- The `en` dictionary is typed from the `pt` one, so a missing key is a **compile error**.
+- All interface texts live in `i18n/<lang>/<namespace>.json` (e.g. [`i18n/pt/home.json`](i18n/pt/home.json)), the same layout as `takere-backend`. The file name is the namespace: `getDictionary(lang).home`. Pages contain no hardcoded text.
+- Messages with markup use tags such as `<b>…</b>`, `<br/>` or `<contact>…</contact>`, rendered with `rich(message, tags)` from [`i18n/rich.tsx`](i18n/rich.tsx). The page decides what each tag renders, so links and styles stay out of the JSON.
+- The `en` files are typed from the `pt` ones (see [`i18n/index.ts`](i18n/index.ts)), so a missing key is a **compile error**.
 - Use the `href(lang, path)` helper from `i18n/config.ts` to build links: `href("pt", "/team")` → `/team`, `href("en", "/team")` → `/en/team`.
 
 ### How unprefixed Portuguese URLs work
@@ -166,7 +170,7 @@ yarn preview
 ### Adding a language
 
 1. Add it to `locales` in `i18n/config.ts`
-2. Create `i18n/dictionaries/<lang>.tsx`
+2. Create `i18n/<lang>/` with every namespace file and register them in `i18n/index.ts`
 3. Add the new key to every `Localized` field in `data/`
 
 ## ✏️ Editing Content
@@ -230,7 +234,7 @@ NEXT_DIST_DIR=.next-export yarn build
 ```
 Property '<key>' is missing in type ...
 ```
-**Solution**: Add the key to `i18n/dictionaries/en.tsx` (or any other locale) with the same shape as in `pt.tsx`.
+**Solution**: Add the key to the namespace file in `i18n/en/` (or any other locale) with the same shape as in `i18n/pt/`.
 
 ## 📝 License
 

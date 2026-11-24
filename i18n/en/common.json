@@ -1,0 +1,30 @@
+{
+  "nav": {
+    "home": "Home",
+    "research": "Research"
+  },
+  "researchNav": {
+    "home": "Home",
+    "team": "Team",
+    "publications": "Publications",
+    "gallery": "Gallery",
+    "contact": "Contact"
+  },
+  "partners": "In collaboration with",
+  "stats": {
+    "students": "Students",
+    "supervisions": "Supervisions",
+    "publications": "Publications"
+  },
+  "footer": {
+    "contact": "Get in touch",
+    "email": "Our email",
+    "rights": "Takere © All rights reserved",
+    "policy": "Privacy Policy",
+    "logoAlt": "takere: individualized care for your patient"
+  },
+  "skip": "Skip to main content",
+  "backToTop": "Back to top",
+  "openMenu": "Open navigation menu",
+  "closeMenu": "Close menu"
+}

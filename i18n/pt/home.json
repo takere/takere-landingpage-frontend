@@ -1,0 +1,24 @@
+{
+  "heroTitle": "Facilite o tratamento de seus pacientes com <strong>Takere</strong>",
+  "heroText": "Somos um grupo de pesquisa com foco em ajudar a <b>equipe de saúde</b> a manter os <b>pacientes engajados no tratamento</b> com uma <b>plataforma simples para personalização do plano de cuidado.</b>",
+  "cta": "Entre em contato",
+  "mission": "O nosso objetivo é fazer com que as informações do tratamento de pacientes cheguem a eles e melhorem<br/>sua adesão ao tratamento",
+  "offerTitle": "O que oferecemos?",
+  "offerImgAlt": "computador",
+  "howTitle": "Como funciona?",
+  "steps": [
+    "Equipes de saúde conseguem <b>montar facilmente</b> o plano de cuidado.",
+    "Paciente interage <b>em casa</b> com aplicativo montado <b>exclusivamente</b> para o seu plano de cuidado",
+    "Equipes de saúde conseguem <b>monitorar</b> e <b>intervir remotamente</b> no tratamento do paciente"
+  ],
+  "screenAlts": [
+    "interface de tratamento da takere",
+    "aplicativo da takere para o paciente",
+    "interface de monitoramento de pacientes da takere"
+  ],
+  "researchTitle": "Pesquisa",
+  "researchText": "Nosso grupo de pesquisa está sediado no Instituto de Informática da <ufrgs>Universidade Federal do Rio Grande do Sul</ufrgs>. Além disso, mantemos uma parceria constante com o <hcpa>Hospital de Clínicas de Porto Alegre</hcpa>. Nossa pesquisa é interdisciplinar e conta com a participação de estudantes de informática e saúde, com o objetivo de estudar técnicas para melhorar o cuidado à saúde.",
+  "researchMore": "Não deixe de <research>ver mais detalhes sobre a nossa pesquisa</research>. Se você é um estudante ou pesquisador e tem interesse em contribuir para a melhoria do cuidado à saúde, <contact>junte-se à nossa equipe de pesquisa</contact>!",
+  "teamTitle": "Equipe",
+  "teamText": "Nossa equipe surgiu com o sonho de construir a plataforma mais fácil para a construção e gerenciamento de aplicações mHealth sob medida. Buscando fazer com que o paciente se sinta acolhido no tratamento e a equipe de saúde tenha as ferramentas para se tornar mais ágil e flexível no tratamento remoto."
+}

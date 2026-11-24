@@ -114,7 +114,7 @@ Documentation improvements are always welcome! This includes:
 
 ### General Principles
 
-1. **No hardcoded text** - Interface texts belong in `i18n/dictionaries/`, content in `data/`
+1. **No hardcoded text** - Interface texts belong in `i18n/<lang>/<namespace>.json`, content in `data/`
 2. **Static first** - The site is a static export; avoid features that need a server at runtime (API routes, middleware-only behavior, image optimization)
 3. **Server Components by default** - Only add `"use client"` when interactivity requires it
 4. **Clear naming** - Use descriptive, consistent names for files, components and data
@@ -130,7 +130,7 @@ takere-landing-page/
 │   └── [lang]/          # Pages (one route tree for all languages)
 ├── components/          # Shared components
 ├── data/                # Structured content
-├── i18n/                # Locale config and dictionaries
+├── i18n/                # Locale config and interface texts (pt/, en/)
 ├── lib/                 # Metadata and helpers
 ├── public/assets/images/ # Images
 └── scripts/             # Post-build scripts
@@ -169,7 +169,7 @@ export default async function ExamplePage({ params }: PageProps<"/[lang]/example
 }
 ```
 
-A new page also needs its SEO texts under `seo.pages` in the dictionaries and an entry in `ROUTES` (`lib/metadata.ts`), which feeds the sitemap.
+A new page also needs its SEO texts under `pages` in every `i18n/<lang>/seo.json` and an entry in `ROUTES` (`lib/metadata.ts`), which feeds the sitemap.
 
 ## 🧩 Content Guidelines
 
@@ -183,10 +183,11 @@ When adding or updating content in `data/`:
 
 ## 🌐 Internationalization Guidelines
 
-1. **Add keys to every dictionary** - `en.tsx` is typed from `pt.tsx`, so a missing key fails the build
-2. **Use `href(lang, path)`** - Never build localized links by hand
-3. **Check both languages** - Review the Portuguese (`/...`) and English (`/en/...`) versions of every changed page
-4. **Adding a language** - Add it to `locales` in `i18n/config.ts`, create its dictionary and add the key to every `Localized` field in `data/`
+1. **Add keys to every language** - The `en/` files are typed from the `pt/` ones, so a missing key fails the build. A new namespace file must be registered in `i18n/index.ts`
+2. **Markup in messages** - Use tags (`<b>…</b>`, `<br/>`, `<contact>…</contact>`) and render them with `rich(message, tags)`; never put JSX or URLs of internal pages in the JSON
+3. **Use `href(lang, path)`** - Never build localized links by hand
+4. **Check both languages** - Review the Portuguese (`/...`) and English (`/en/...`) versions of every changed page
+5. **Adding a language** - Add it to `locales` in `i18n/config.ts`, create `i18n/<lang>/` with every namespace file, register it in `i18n/index.ts` and add the key to every `Localized` field in `data/`
 
 ## 🔄 Pull Request Process
 

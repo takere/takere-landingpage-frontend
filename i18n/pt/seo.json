@@ -1,0 +1,34 @@
+{
+  "ogAlt": "Takere: cuidado individualizado ao seu paciente",
+  "organization": "Grupo de pesquisa do Instituto de Informática da UFRGS, em parceria com o HCPA, que desenvolve uma plataforma mHealth para personalização do plano de cuidado e engajamento de pacientes no tratamento.",
+  "pages": {
+    "home": {
+      "title": "Takere | Cuidado Individualizado ao seu Paciente",
+      "description": "Grupo de pesquisa da UFRGS e do HCPA que desenvolve uma plataforma mHealth para personalizar o plano de cuidado e manter pacientes engajados no tratamento."
+    },
+    "research": {
+      "title": "Pesquisa em Saúde Digital e mHealth | Takere",
+      "description": "Takere Research Lab (UFRGS/HCPA): pesquisa em mHealth, IA, interfaces conversacionais, HL7 FHIR, privacidade de dados e adesão ao tratamento."
+    },
+    "team": {
+      "title": "Equipe do Grupo de Pesquisa | Takere",
+      "description": "Coordenadores, membros e membros anteriores do grupo de pesquisa Takere, do Instituto de Informática da UFRGS, em parceria com o HCPA."
+    },
+    "publications": {
+      "title": "Publicações em Saúde Digital | Takere",
+      "description": "Artigos, trabalhos de conclusão e outras publicações do grupo de pesquisa Takere sobre saúde digital e mHealth, organizados por ano."
+    },
+    "gallery": {
+      "title": "Galeria de Fotos | Takere",
+      "description": "Fotos do grupo de pesquisa Takere: eventos, apresentações e encontros da equipe da UFRGS e do HCPA."
+    },
+    "contact": {
+      "title": "Contato | Takere Research Lab",
+      "description": "Entre em contato com o grupo de pesquisa Takere: e-mail e endereço no Instituto de Informática da UFRGS, em Porto Alegre."
+    },
+    "policy": {
+      "title": "Política de Privacidade | Takere",
+      "description": "Política de privacidade da Takere: como coletamos, utilizamos e protegemos dados pessoais, em conformidade com a LGPD."
+    }
+  }
+}

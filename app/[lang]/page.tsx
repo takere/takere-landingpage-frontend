@@ -4,6 +4,7 @@ import { LinkRoot } from "@heroui/react/link";
 import { TooltipContent, TooltipRoot } from "@heroui/react/tooltip";
 import { buttonVariants } from "@heroui/styles";
 import Image from "next/image";
+import Link from "next/link";
 import Footer from "@/components/Footer";
 import PersonAvatar from "@/components/PersonAvatar";
 import Partners from "@/components/Partners";
@@ -11,7 +12,7 @@ import SectionTitle from "@/components/SectionTitle";
 import Stats from "@/components/Stats";
 import { offers } from "@/data/home";
 import { coordinators } from "@/data/team";
-import { getDictionary, type Lang } from "@/i18n";
+import { getDictionary, href, rich, type Lang, type RichTags } from "@/i18n";
 import { cn } from "@/lib/cn";
 import { pageMetadata } from "@/lib/metadata";
 
@@ -25,6 +26,23 @@ const prose = "font-display leading-loose text-justify mobile:text-u-16 mobile:l
 export default async function Page({ params }: PageProps<"/[lang]">) {
   const lang = (await params).lang as Lang;
   const t = getDictionary(lang).home;
+  const tags: RichTags = {
+    b: (chunks) => <b>{chunks}</b>,
+    strong: (chunks) => <strong>{chunks}</strong>,
+    br: () => <br />,
+    ufrgs: (chunks) => (
+      <a href="https://www.ufrgs.br" target="_blank" rel="noopener noreferrer">
+        {chunks}
+      </a>
+    ),
+    hcpa: (chunks) => (
+      <a href="https://www.hcpa.edu.br" target="_blank" rel="noopener noreferrer">
+        {chunks}
+      </a>
+    ),
+    research: (chunks) => <Link href={href(lang, "/research")}>{chunks}</Link>,
+    contact: (chunks) => <Link href={href(lang, "/contact")}>{chunks}</Link>,
+  };
 
   return (
     <>
@@ -41,13 +59,13 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
               )}
               data-reveal="left"
             >
-              {t.heroTitle}
+              {rich(t.heroTitle, tags)}
             </h1>
             <p
               className="mt-27.5 w-122.5 max-w-full px-11.25 text-center font-display text-lg leading-[1.88] desktop:max-[900px]:w-auto desktop:max-[900px]:px-0 mobile:mt-12 mobile:w-auto mobile:px-0 mobile:text-u-17 mobile:leading-[calc(32*var(--u))]"
               data-reveal="up"
             >
-              {t.heroText}
+              {rich(t.heroText, tags)}
             </p>
             <a
               href="#contato"
@@ -81,7 +99,7 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
             className="mx-auto max-w-245 text-center font-display text-[32px] leading-[1.4] font-bold text-white mobile:text-u-19 mobile:leading-[calc(26.6*var(--u))]"
             data-reveal="up"
           >
-            {t.mission}
+            {rich(t.mission, tags)}
           </p>
         </section>
 
@@ -130,10 +148,10 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
               {t.howTitle}
             </SectionTitle>
             <ol className="-mt-12.5 mobile:mx-[calc(-20*var(--u))] mobile:mt-9">
-              <Step n={1} text={t.steps[0]} textReveal="left">
+              <Step n={1} text={rich(t.steps[0], tags)} textReveal="left">
                 <Monitor screen="/assets/images/home/screen-care-plan.webp" alt={t.screenAlts[0]} />
               </Step>
-              <Step n={2} text={t.steps[1]} textReveal="right" reverse>
+              <Step n={2} text={rich(t.steps[1], tags)} textReveal="right" reverse>
                 <div
                   className="relative w-51 justify-self-center [grid-area:media] mobile:mt-2.5 mobile:ml-20.5"
                   data-reveal="left"
@@ -148,7 +166,7 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
                   />
                 </div>
               </Step>
-              <Step n={3} text={t.steps[2]} textReveal="left" last>
+              <Step n={3} text={rich(t.steps[2], tags)} textReveal="left" last>
                 <Monitor screen="/assets/images/home/screen-monitoring.webp" alt={t.screenAlts[2]} last />
               </Step>
             </ol>
@@ -172,12 +190,12 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
               data-reveal="left"
             />
             <p className={cn(prose, "[&_a]:bg-green [&_a]:px-px [&_a]:text-white [&_a]:no-underline")}>
-              {t.researchText}
+              {rich(t.researchText, tags)}
             </p>
           </div>
           <Stats lang={lang} />
           <p className={cn(prose, "mt-10 mobile:mt-8 [&_a]:font-semibold [&_a]:text-green [&_a]:underline-offset-4")}>
-            {t.researchMore}
+            {rich(t.researchMore, tags)}
           </p>
         </section>
 

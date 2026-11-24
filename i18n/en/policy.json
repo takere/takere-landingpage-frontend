@@ -1,0 +1,54 @@
+{
+  "title": "Privacy Policy",
+  "operated": "This product is maintained and operated by",
+  "intro": "We collect and use some personal data belonging to those who use our website, our nurse care platform (HCP), and our patient app. In doing so, we act as the data controller and are subject to the provisions of Federal Law No. 13.709/2018 (General Data Protection Law - LGPD).",
+  "care": "We care about protecting your personal data and, therefore, we provide this privacy policy, which contains important information about:",
+  "topics": [
+    "Who should use our product?",
+    "What data do we collect and what do we do with it?",
+    "Your rights regarding your personal data; and",
+    "How to contact us."
+  ],
+  "s1": "1. Who should use our product?",
+  "s1Text": "Our website should only be used by people over the age of eighteen. Therefore, children and teenagers should not use it.",
+  "s2": "2. Data we collect and reasons for collection",
+  "s2Text": "Our product collects and uses some personal data from our users, as set forth in this section.",
+  "s21": "2.1. Personal data expressly provided by the user",
+  "s21Text": "We collect the following personal data that our users expressly provide to us when using our product:",
+  "data": [
+    "Full name;",
+    "Cell phone",
+    "Photo",
+    "Name of the institution",
+    "E-mail",
+    "Date of birth",
+    "CPF",
+    "Education",
+    "Religion",
+    "Address",
+    "Medical and medication history",
+    "Allergies",
+    "Weight",
+    "Height",
+    "Diet."
+  ],
+  "when": "This data is collected at the following times:",
+  "moments": [
+    "When a user registers or is signed up on the platform;",
+    "When the user makes contact through the website;",
+    "When the user authenticates in the system."
+  ],
+  "why": "The data provided by our users is collected for the following purposes:",
+  "purposes": [
+    "So that the user can authenticate themselves on the platform;",
+    "Creating accurate care plans;",
+    "To better understand our users' profiles in order to offer a better experience."
+  ],
+  "s23": "2.3. Sensitive data",
+  "s23Text": "We will not collect sensitive data from our users, as defined in articles 11 et seq. of the Personal Data Protection Law. Therefore, we will not collect data on racial or ethnic origin, religious beliefs, political opinions, membership in a trade union or religious, philosophical or political organization, data concerning health or sex life, genetic or biometric data when linked to a natural person.",
+  "s24": "2.4. Collection of data not expressly foreseen",
+  "s24Text": [
+    "Eventually, other types of data not expressly provided for in this Privacy Policy may be collected, provided that they are provided with the user's consent, or that the collection is permitted based on another legal basis provided for by law.",
+    "In any case, the data collection and resulting processing activities will be communicated to users."
+  ]
+}

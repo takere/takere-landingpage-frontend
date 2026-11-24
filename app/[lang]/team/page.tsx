@@ -56,6 +56,7 @@ export default async function Page({ params }: PageProps<"/[lang]/team">) {
                       <ProfileLink url={c.lattes} icon="lattes" label="Lattes" />
                       <ProfileLink url={c.orcid} icon="orcid" label="ORCID" />
                       <ProfileLink url={c.linkedin} icon="linkedin" label="LinkedIn" />
+                      {c.homepage && <ProfileLink url={c.homepage} icon="homepage" label={t.homepage} />}
                     </CardFooter>
                   </CardRoot>
                 </article>
@@ -88,7 +89,7 @@ export default async function Page({ params }: PageProps<"/[lang]/team">) {
             name: c.name[lang],
             photo: c.photo,
             jobTitle: c.degree[lang],
-            sameAs: [c.orcid, c.lattes, c.linkedin],
+            sameAs: [c.orcid, c.lattes, c.linkedin, ...(c.homepage ? [c.homepage] : [])],
           })),
           ...members(lang).map((m) => ({ name: m.name, photo: m.photo, jobTitle: m.lines[0] })),
         ])}
@@ -107,16 +108,40 @@ function ProfileLink({ url, icon, label }: { url: string; icon: string; label: s
         aria-label={label}
         className="rounded-full p-1 transition-transform duration-200 hover:scale-110 hover:bg-default mobile:p-0.5"
       >
-        <Image
-          src={`/assets/images/icons/${icon}.webp`}
-          alt=""
-          width={36}
-          height={36}
-          className="size-9 rounded-full mobile:size-11.75"
-        />
+        {icon === "homepage" ? (
+          <span className="grid size-9 place-items-center rounded-full bg-ink text-white mobile:size-11.75">
+            <HomeIcon />
+          </span>
+        ) : (
+          <Image
+            src={`/assets/images/icons/${icon}.webp`}
+            alt=""
+            width={36}
+            height={36}
+            className="size-9 rounded-full mobile:size-11.75"
+          />
+        )}
       </LinkRoot>
       <TooltipContent showArrow>{label}</TooltipContent>
     </TooltipRoot>
+  );
+}
+
+function HomeIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="size-5 mobile:size-6.5"
+    >
+      <path d="M3 10.5 12 3l9 7.5" />
+      <path d="M5 9v11a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9" />
+    </svg>
   );
 }
 

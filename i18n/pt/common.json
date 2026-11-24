@@ -1,0 +1,30 @@
+{
+  "nav": {
+    "home": "Início",
+    "research": "Pesquisa"
+  },
+  "researchNav": {
+    "home": "Início",
+    "team": "Equipe",
+    "publications": "Publicações",
+    "gallery": "Galeria",
+    "contact": "Contato"
+  },
+  "partners": "Em colaboração com",
+  "stats": {
+    "students": "Estudantes",
+    "supervisions": "Orientações",
+    "publications": "Publicações"
+  },
+  "footer": {
+    "contact": "Entre em contato",
+    "email": "Nosso e-mail",
+    "rights": "Takere © Todos os direitos reservados",
+    "policy": "Política de Privacidade",
+    "logoAlt": "takere: cuidado individualizado ao seu paciente"
+  },
+  "skip": "Pular para o conteúdo principal",
+  "backToTop": "Voltar ao topo",
+  "openMenu": "Abrir menu de navegação",
+  "closeMenu": "Fechar menu"
+}

@@ -1,0 +1,24 @@
+{
+  "title": "Publicações do Takere Research Lab",
+  "count": {
+    "one": "publicação",
+    "other": "publicações"
+  },
+  "kinds": {
+    "journal": "Artigo em periódico",
+    "conference": "Artigo em conferência",
+    "thesis": "Trabalho de conclusão"
+  },
+  "links": {
+    "pdf": "PDF",
+    "supplementary": "Material suplementar"
+  },
+  "detail": {
+    "back": "Todas as publicações",
+    "authors": "Autores",
+    "venue": "Publicado em",
+    "year": "Ano",
+    "abstract": "Resumo",
+    "description": "{kind} ({year}) de {authors}, publicado pelo grupo de pesquisa Takere (UFRGS/HCPA)."
+  }
+}

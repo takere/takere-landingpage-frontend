@@ -8,6 +8,7 @@ export interface Coordinator {
   linkedin: string;
   lattes: string;
   orcid: string;
+  homepage?: string;
 }
 
 export const coordinators: Coordinator[] = [
@@ -19,6 +20,7 @@ export const coordinators: Coordinator[] = [
     linkedin: "https://br.linkedin.com/in/erikacota",
     lattes: "http://lattes.cnpq.br/1476916621672594",
     orcid: "https://orcid.org/0000-0001-7431-7738",
+    homepage: "https://www.inf.ufrgs.br/site/docente/erika-fernandes-cota",
   },
   {
     name: { pt: "William Niemiec", en: "William Niemiec" },
@@ -28,6 +30,7 @@ export const coordinators: Coordinator[] = [
     linkedin: "https://br.linkedin.com/in/williamniemiec",
     lattes: "http://lattes.cnpq.br/8694151845850127",
     orcid: "https://orcid.org/0000-0003-3290-4162",
+    homepage: "https://williamniemiec.github.io",
   },
   {
     name: { pt: "Douglas N. Matos", en: "Douglas N. Matos" },

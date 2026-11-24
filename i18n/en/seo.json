@@ -1,0 +1,34 @@
+{
+  "ogAlt": "Takere: individualized care for your patient",
+  "organization": "Research group at the Institute of Informatics (UFRGS), in partnership with HCPA, developing an mHealth platform for personalizing care plans and keeping patients engaged in treatment.",
+  "pages": {
+    "home": {
+      "title": "Takere | Individualized Care for Your Patient",
+      "description": "UFRGS and HCPA research group building an mHealth platform to personalize care plans and keep patients engaged in their treatment."
+    },
+    "research": {
+      "title": "Digital Health & mHealth Research | Takere",
+      "description": "Takere Research Lab (UFRGS/HCPA): research in mHealth, AI, conversational interfaces, HL7 FHIR, data privacy and treatment adherence."
+    },
+    "team": {
+      "title": "Research Group Team | Takere",
+      "description": "Coordinators, members and former members of the Takere research group at the Institute of Informatics (UFRGS), in partnership with HCPA."
+    },
+    "publications": {
+      "title": "Digital Health Publications | Takere",
+      "description": "Papers, theses and other publications by the Takere research group on digital health and mHealth, organized by year."
+    },
+    "gallery": {
+      "title": "Photo Gallery | Takere",
+      "description": "Photos of the Takere research group: events, presentations and team meetings at UFRGS and HCPA."
+    },
+    "contact": {
+      "title": "Contact | Takere Research Lab",
+      "description": "Get in touch with the Takere research group: email and address at the Institute of Informatics, UFRGS, Porto Alegre, Brazil."
+    },
+    "policy": {
+      "title": "Privacy Policy | Takere",
+      "description": "Takere privacy policy: how we collect, use and protect personal data, in compliance with Brazil's LGPD."
+    }
+  }
+}

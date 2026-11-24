@@ -1,0 +1,24 @@
+{
+  "heroTitle": "Make treatment easier for your patients with <strong>Takere</strong>",
+  "heroText": "We are a research group focused on helping <b>healthcare teams</b> keep <b>patients engaged in their treatment</b> with a <b>simple platform for personalizing care plans.</b>",
+  "cta": "Get in touch",
+  "mission": "Our goal is to ensure that patient treatment information reaches them and improves<br/>your adherence to treatment",
+  "offerTitle": "What do we offer?",
+  "offerImgAlt": "computer",
+  "howTitle": "How does it work?",
+  "steps": [
+    "Healthcare teams can <b>easily put together</b> a care plan.",
+    "The patient interacts <b>at home</b> with an app designed <b>exclusively</b> for their care plan.",
+    "Healthcare teams are able to remotely <b>monitor</b> and <b>intervene</b> in patient treatment."
+  ],
+  "screenAlts": [
+    "takere treatment interface",
+    "takere treatment interface in mobile application",
+    "takere patient monitoring interface"
+  ],
+  "researchTitle": "Research",
+  "researchText": "Our research group is based at the Institute of Informatics of the <ufrgs>Federal University of Rio Grande do Sul</ufrgs>. In addition, we maintain an ongoing partnership with the <hcpa>Hospital de Clínicas de Porto Alegre</hcpa>. Our research is interdisciplinary and involves students from computer science and health sciences, with the goal of studying techniques to improve healthcare.",
+  "researchMore": "Be sure to <research>check out more details about our research</research>. If you are a student or researcher and are interested in contributing to the improvement of healthcare, <contact>join our research team</contact>!",
+  "teamTitle": "Team",
+  "teamText": "Our team emerged with the dream of building the easiest platform for building and managing custom mHealth applications. Our goal is to make patients feel supported during treatment and to provide healthcare teams with the tools to become more agile and flexible in remote care."
+}
